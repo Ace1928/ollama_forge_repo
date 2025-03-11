@@ -41,11 +41,11 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "requests>=2.26.0,<3.0.0",
-    "aiohttp>=3.8.0,<4.0.0",
-    "colorama>=0.4.4",
-    "numpy>=1.19.0",
-    "packaging>=20.0",
+    "requests",
+    "aiohttp",
+    "colorama",
+    "numpy",
+    "packaging",
 ]
 
 [project.urls]
@@ -60,28 +60,28 @@ ollama-forge = "ollama_forge.cli:main"
 
 [project.optional-dependencies]
 dev = [
-    "black>=23.1.0",
-    "isort>=5.12.0",
-    "flake8>=6.0.0",
-    "mypy>=1.0.0",
-    "pytest>=7.2.1",
-    "pytest-cov>=4.0.0",
-    "pytest-asyncio>=0.20.0",
-    "twine>=4.0.2",
-    "build>=0.10.0",
+    "black",
+    "isort",
+    "flake8",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "twine",
+    "build",
 ]
 docs = [
-    "sphinx>=6.1.3",
-    "sphinx-rtd-theme>=1.2.0",
-    "myst-parser>=1.0.0",
-    "sphinx-copybutton>=0.5.1",
-    "sphinx-autodoc-typehints>=1.22.0",
+    "sphinx",
+    "sphinx-rtd-theme",
+    "myst-parser",
+    "sphinx-copybutton",
+    "sphinx-autodoc-typehints",
 ]
 full = [
-    "pandas>=1.3.0",
-    "scikit-learn>=1.0.0",
-    "matplotlib>=3.5.0",
-    "faiss-cpu>=1.7.0",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "faiss-cpu",
 ]
 
 [tool.black]
