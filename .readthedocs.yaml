@@ -30,7 +30,7 @@ python:
       extra_requirements:
         - docs  # Install documentation extras from pyproject.toml
     - requirements: docs/requirements.txt
-      extra_pip_args: [--no-cache-dir]  # Skip hash validation
+      extra_pip_args: [--no-cache-dir, --no-deps]  # Skip hash validation
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📘 Sphinx configuration - Structure as control
