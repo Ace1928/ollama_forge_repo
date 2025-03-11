@@ -11,8 +11,8 @@ import subprocess
 project = "Ollama Forge"
 copyright = "2025, Lloyd Handyside"
 author = "Lloyd Handyside"
-version = "0.2.0"
-release = "0.2.0"
+version = "0.1.9"  # Updated to match pyproject.toml
+release = "0.1.9"  # Updated to match pyproject.toml
 
 # Ensure project root is on sys.path for synergy 🚀
 sys.path.insert(0, os.path.abspath(".."))

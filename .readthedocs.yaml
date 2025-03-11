@@ -29,7 +29,8 @@ python:
       path: .  # Install the package itself first
       extra_requirements:
         - docs  # Install documentation extras from pyproject.toml
-    - requirements: docs/requirements.txt  # Additional Sphinx dependencies
+    - requirements: docs/requirements.txt
+      extra_pip_args: [--no-cache-dir]  # Skip hash validation
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📘 Sphinx configuration - Structure as control
