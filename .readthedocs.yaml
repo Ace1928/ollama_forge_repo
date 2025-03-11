@@ -32,8 +32,6 @@ python:
       extra_requirements:
         - docs  # Install documentation extras from pyproject.toml
     - requirements: docs/requirements.txt  # Additional Sphinx dependencies
-      options:
-        ignore_hashes: true
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📘 Sphinx configuration - Structure as control
