@@ -50,27 +50,44 @@ def fix_fallback_context_docstring() -> bool:
     docstring = match.group(1)
     original = docstring  # Store original for comparison
     
-    # Fix indentation with elegance - structure as control
-    docstring = re.sub(r'\n\s+', '\n    ', docstring)
-    
     # Fix unclosed backticks with surgical precision - contextual integrity
     lines = docstring.split('\n')
-    for i in range(len(lines)):
-        # Count backticks in line - ensure perfect balance
-        count = lines[i].count('`')
+    fixed_lines = []
+    
+    for i, line in enumerate(lines):
+        # First, fix explicit problems in the known problematic lines
+        if "simple query" in line and line.count('`') % 2 == 1:
+            # Line has "simple query" and odd number of backticks
+            line = line.replace("`simple query", "`simple query`")
+        
+        if "more complex topic" in line and line.count('`') % 2 == 1:
+            # Line has "more complex topic" and odd number of backticks
+            line = line.replace("`more complex topic", "`more complex topic`")
+        
+        # Fix indentation for specific example
+        if i > 0 and "Example" in lines[i-1] and line.startswith("  "):
+            line = "    " + line.lstrip()
+        
+        # Count backticks and fix if needed
+        count = line.count('`')
         if count % 2 == 1:  # Odd number of backticks - asymmetry detected
-            # Algorithm: If a line opens a backtick but doesn't close it, add closing
-            if '`' in lines[i] and not lines[i].endswith('`'):
-                # Add closing backtick but preserve any trailing spaces
-                trailing_spaces = len(lines[i]) - len(lines[i].rstrip())
-                if trailing_spaces > 0:
-                    lines[i] = lines[i][:-trailing_spaces] + '`' + ' ' * trailing_spaces
-                else:
-                    lines[i] += '`'
-                logger.debug(f"🔧 Fixed unclosed backtick in line: {lines[i]}")
+            # Add closing backtick but preserve any trailing spaces
+            trailing_spaces = len(line) - len(line.rstrip())
+            if trailing_spaces > 0:
+                line = line[:-trailing_spaces] + '`' + ' ' * trailing_spaces
+            else:
+                line += '`'
+            logger.debug(f"🔧 Fixed unclosed backtick in line: {line}")
+        
+        fixed_lines.append(line)
+    
+    # Ensure consistent indentation for all lines
+    for i in range(len(fixed_lines)):
+        if i > 0 and fixed_lines[i].strip() and not fixed_lines[i].startswith('    ') and not fixed_lines[i].startswith('\t'):
+            fixed_lines[i] = '    ' + fixed_lines[i].lstrip()
     
     # Reassemble the fixed docstring - flow like a river
-    fixed_docstring = '\n'.join(lines)
+    fixed_docstring = '\n'.join(fixed_lines)
     
     # Only update if changes were made - minimal intervention principle
     if fixed_docstring != original:
@@ -215,6 +232,14 @@ def _analyze_docstring_issues(content: str, issue_types: Dict) -> Dict:
     for docstring_match in re.finditer(docstring_pattern, content, re.DOTALL):
         docstring = docstring_match.group(1)
         
+        # Check for fallback_context docstring specifically
+        if "When generating responses" in docstring and "simple query" in docstring:
+            # Special handling for the problematic fallback_context docstring
+            if "`simple query" in docstring and not "`simple query`" in docstring:
+                issue_types["backtick_asymmetry"]["count"] += 5  # High priority issue
+            if "`more complex topic" in docstring and not "`more complex topic`" in docstring:
+                issue_types["backtick_asymmetry"]["count"] += 5  # High priority issue
+        
         # Check for backtick asymmetry - balance is everything
         backtick_count = sum(line.count('`') % 2 for line in docstring.split('\n'))
         if backtick_count:
@@ -248,6 +273,84 @@ def _analyze_docstring_issues(content: str, issue_types: Dict) -> Dict:
     
     return issue_types
 
+# Add this new function to automatically add :noindex: to duplicate objects
+def add_noindex_to_duplicates(directory: Path = Path("../docs")) -> int:
+    """
+    Add :noindex: directives to duplicate objects to prevent build warnings.
+    
+    Args:
+        directory: Directory to scan for RST files
+        
+    Returns:
+        int: Number of files fixed
+    """
+    logger.info(f"🔍 Scanning for duplicate object descriptions in {directory}")
+    
+    # Track objects that have been seen
+    seen_objects = {}
+    fixed_count = 0
+    
+    # First pass: identify all objects
+    for rst_file in directory.glob("**/*.rst"):
+        try:
+            with open(rst_file, "r", encoding="utf-8") as f:
+                content = f.read()
+            
+            # Find all object directives
+            object_pattern = r'(\.\. py:[a-z]+:: ([a-zA-Z0-9_\.]+(?:\.[a-zA-Z0-9_]+)*))'
+            for match in re.finditer(object_pattern, content):
+                obj_name = match.group(2)
+                if obj_name in seen_objects:
+                    seen_objects[obj_name].append(rst_file)
+                else:
+                    seen_objects[obj_name] = [rst_file]
+        except Exception as e:
+            logger.warning(f"⚠️ Error reading {rst_file}: {e}")
+    
+    # Find duplicates
+    duplicate_objects = {obj: files for obj, files in seen_objects.items() if len(files) > 1}
+    
+    if not duplicate_objects:
+        logger.info("✨ No duplicate objects found")
+        return 0
+    
+    logger.info(f"🔍 Found {len(duplicate_objects)} objects with duplicates")
+    
+    # Second pass: add :noindex: to all but the first file for each object
+    for obj_name, files in duplicate_objects.items():
+        # Skip first file (keep primary definition)
+        for rst_file in files[1:]:
+            try:
+                with open(rst_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+                
+                # Find the object directive
+                obj_pattern = rf'(\.\. py:[a-z]+:: {re.escape(obj_name)})\s*$'
+                if not re.search(obj_pattern, content, re.MULTILINE):
+                    # Try alternative pattern with parentheses for methods
+                    obj_pattern = rf'(\.\. py:[a-z]+:: {re.escape(obj_name)}(?:\([^)]*\))?)\s*$'
+                
+                # Only add :noindex: if not already there
+                noindex_check = re.search(rf'{obj_pattern}\s+:noindex:', content, re.MULTILINE)
+                if not noindex_check:
+                    content = re.sub(
+                        obj_pattern,
+                        r'\1\n   :noindex:',
+                        content,
+                        flags=re.MULTILINE
+                    )
+                    
+                    with open(rst_file, "w", encoding="utf-8") as f:
+                        f.write(content)
+                    
+                    fixed_count += 1
+                    logger.debug(f"✅ Added :noindex: to {obj_name} in {rst_file}")
+            except Exception as e:
+                logger.warning(f"⚠️ Error processing {rst_file}: {e}")
+    
+    logger.info(f"✅ Added :noindex: directives to {fixed_count} objects")
+    return fixed_count
+
 if __name__ == "__main__":
     # Show our beautiful ASCII banner - because style matters!
     print("""
@@ -276,11 +379,20 @@ if __name__ == "__main__":
                 print(f"    ... and {len(problematic) - 10} more")
             print("\n💡 TIP: Fix these files manually or extend this script to handle them!")
     
+    # Optionally add noindex directives to duplicate objects
+    if "--fix-duplicates" in sys.argv:
+        directory = Path("../docs")
+        if len(sys.argv) > 2 and sys.argv[1] != "--fix-duplicates":
+            directory = Path(sys.argv[1])
+        fixed_count = add_noindex_to_duplicates(directory)
+        logger.info(f"🔧 Fixed {fixed_count} duplicate object descriptions")
+    
     # Show help if requested
     if "--help" in sys.argv:
         print("\n📘 Eidosian Docstring Fixer Help:")
         print("  python fix_docstrings.py [directory] [options]")
         print("\nOptions:")
-        print("  --scan    Scan for files with potential docstring issues")
-        print("  --help    Show this help message")
+        print("  --scan         Scan for files with potential docstring issues")
+        print("  --fix-duplicates  Add :noindex: to duplicate object descriptions")
+        print("  --help         Show this help message")
         print("\n🌠 Example: python fix_docstrings.py ../src --scan")
