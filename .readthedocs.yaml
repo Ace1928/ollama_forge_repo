@@ -18,9 +18,7 @@ build:
   jobs:
     pre_build:
       # Self-awareness as foundation - know what we're building
-      - echo "📊 Building docs for Ollama Forge v$(python -c 'import ollama_forge; print(ollama_forge.__version__)')"
-      - echo "🔍 Python $(python --version)"
-      - echo "🧩 Sphinx $(pip show sphinx | grep Version)"
+      - echo "📊 Building docs for Ollama Forge"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 🐍 Python environment - Precision as style, flow like a river
