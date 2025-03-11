@@ -10,8 +10,8 @@ sphinx>=8.2.3
 # ┏━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🌌 THEMES             ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
-furo
-# Sphinx theme - modern and responsive
+furo>=2024.8.6
+# Furo theme - modern and responsive
 sphinx-rtd-theme>=3.0.2   
 # Read the Docs theme - classic and reliable
 
