@@ -17,7 +17,7 @@ import sys
 import argparse
 import shutil
 from datetime import datetime
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 from version import update_version_universally, get_version_string
 
 def run_command(cmd: List[str], check: bool = True) -> Tuple[bool, str]:

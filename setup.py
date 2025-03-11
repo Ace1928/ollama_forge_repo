@@ -26,8 +26,10 @@ Each fallback embodies recursive adaptation 🔄
 import setuptools
 import os
 import sys
+import importlib.util
 from pathlib import Path
 import time
+from typing import Callable, cast
 
 # ⏱️ Track import strategy performance
 start_time = time.time()
@@ -36,52 +38,66 @@ start_time = time.time()
 if sys.version_info < (3, 8):
     sys.exit("🚨 Python 3.8+ required - your time machine is stuck in the past! 🕰️")
 
+# Type-safe fallback defaults
+package_name_normalized: str = "ollama_forge"
+version: str = "0.1.9"
+author: str = "Lloyd Handyside, Eidos"
+author_email: str = "ace1928@gmail.com, syntheticeidos@gmail.com"
+description: str = "Python client library and CLI for Ollama"
+import_path: str = "⚠️ Initial defaults"
+
 # 🧩 Import Strategy: Layered resilience with graceful degradation
 try:
     # 🥇 Primary path: Direct module access for maximum performance
     config_path = Path(__file__).parent / "ollama_forge" / "config.py"
     if config_path.exists():
-        sys.path.insert(0, str(config_path.parent))
-        from config import (
-            PACKAGE_NAME_NORMALIZED,
-            get_version_string,
-            get_author_string,
-            get_email_string,
-        )
-        version = get_version_string()  # 📊 Version from source
-        author = get_author_string()    # 👤 Author attribution 
-        author_email = get_email_string()  # 📧 Contact pathway
-        description = "Python client library and CLI for Ollama"
-        import_path = "🔍 Direct config module"
+        # Import the config module dynamically to avoid import errors
+        spec = importlib.util.spec_from_file_location("dynamic_config", config_path)
+        if spec is not None and spec.loader is not None:
+            dynamic_config = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(dynamic_config)
+            
+            # Access configurations with proper type annotations
+            package_name_normalized = cast(str, getattr(dynamic_config, "PACKAGE_NAME_NORMALIZED", package_name_normalized))
+            get_version_string: Callable[[], str] = getattr(dynamic_config, "get_version_string")
+            get_author_string: Callable[[], str] = getattr(dynamic_config, "get_author_string")
+            get_email_string: Callable[[], str] = getattr(dynamic_config, "get_email_string")
+            
+            # Get values with proper type casting
+            version = get_version_string()
+            author = get_author_string()
+            author_email = get_email_string()
+            import_path = "🔍 Direct config module"
     else:
         # 🥈 Secondary path: Package import with namespace resolution
         sys.path.insert(0, os.path.abspath('.'))
-        from ollama_forge.config import (
-            PACKAGE_NAME_NORMALIZED,
-            get_version_string,
-            get_author_string,
-            get_email_string,
-        )
-        version = get_version_string()
-        author = get_author_string()
-        author_email = get_email_string()
-        description = "Python client library and CLI for Ollama"
-        import_path = "🔁 Package namespace resolution"
-except ImportError:
+        try:
+            ollama_forge_config = importlib.import_module("ollama_forge.config")
+            
+            # Access configurations with type safety
+            package_name_normalized = cast(str, getattr(ollama_forge_config, "PACKAGE_NAME_NORMALIZED", package_name_normalized))
+            get_version_string = cast(Callable[[], str], getattr(ollama_forge_config, "get_version_string"))
+            get_author_string = cast(Callable[[], str], getattr(ollama_forge_config, "get_author_string"))
+            get_email_string = cast(Callable[[], str], getattr(ollama_forge_config, "get_email_string"))
+            
+            # Get values with proper type casting
+            version = get_version_string()
+            author = get_author_string()
+            author_email = get_email_string()
+            import_path = "🔁 Package namespace resolution"
+        except (ImportError, AttributeError):
+            # Fallback to default values already set
+            import_path = "⚠️ Fallback to default values (namespace import failed)"
+except Exception as e:
     # 🛡️ Fallback shield: Default values ensure continuity
-    version = "0.1.9"  # 🏷️ Baseline version
-    author = "Lloyd Handyside, Eidos"  # ✍️ Attribution preserved
-    author_email = "ace1928@gmail.com, syntheticeidos@gmail.com"
-    description = "Python client library and CLI for Ollama"
-    PACKAGE_NAME_NORMALIZED = "ollama_forge"
-    import_path = "⚠️ Fallback values (ImportError shield activated)"
+    import_path = f"⚠️ Fallback values (exception: {type(e).__name__})"
 
 # ⚡ Performance metrics - because velocity matters
 import_time = time.time() - start_time
 
 # 📦 Package registration: Minimal yet complete
 setuptools.setup(
-    name=PACKAGE_NAME_NORMALIZED,  # 🏷️ Identity
+    name=package_name_normalized,  # 🏷️ Identity
     version=version,               # 🔢 Semantic versioning 
     author=author,                 # 👤 Creator attribution
     author_email=author_email,     # 📫 Contact vector
@@ -92,4 +108,4 @@ setuptools.setup(
 if os.environ.get("OLLAMA_FORGE_DEBUG") == "1":
     print(f"⚙️ Setup initialized via {import_path}")
     print(f"⏱️ Import strategy completed in {import_time:.6f}s")
-    print(f"📦 Package: {PACKAGE_NAME_NORMALIZED} v{version}")
+    print(f"📦 Package: {package_name_normalized} v{version}")
