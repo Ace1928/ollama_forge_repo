@@ -5,18 +5,10 @@ Example script for checking Ollama and client versions.
 This example demonstrates version checking, compatibility validation,
 and proper error handling for version-related operations.
 """
-
-import os
-import sys
-from typing import Dict, Any, Tuple
-
-# Add parent directory to path for direct script execution
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if parent_dir not in sys.path:
-    sys.path.insert(0, parent_dir)
+from typing import Dict, Tuple
 
 from ollama_forge import OllamaClient
-from ollama_forge.helpers.common import print_header, print_success, print_error, print_info
+from helpers.common import print_header, print_success, print_error, print_info
 from version import is_compatible_ollama_version, __version__ as client_version
 
 def check_versions() -> Tuple[Dict[str, str], bool]:

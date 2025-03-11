@@ -4,7 +4,6 @@ Tool for checking, installing, and managing the Ollama backend.
 """
 
 import argparse
-import os
 import platform
 import subprocess
 import sys
@@ -12,11 +11,7 @@ import time
 import logging
 from typing import Tuple
 
-# Add parent directory to path for direct execution
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-
-try:
-    from ollama_forge.helpers.common import (
+from helpers.common import (
         DEFAULT_OLLAMA_API_URL,
         print_error,
         print_header,
@@ -24,20 +19,6 @@ try:
         print_success,
         print_warning,
     )
-except ImportError:
-    # When run directly or in development
-    parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    if parent_dir not in sys.path:
-        sys.path.insert(0, parent_dir)
-    from helpers.common import (
-        DEFAULT_OLLAMA_API_URL,
-        print_error,
-        print_header,
-        print_info,
-        print_success,
-        print_warning,
-    )
-
 
 def check_ollama_installed() -> Tuple[bool, str]:
     """

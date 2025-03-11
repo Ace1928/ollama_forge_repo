@@ -32,9 +32,8 @@ _backup_chat_model = "qwen2.5:0.5b-Instruct"  # Excellent fallback
 _embedding_model = _chat_model  # Using chat model for embeddings improves context
 _backup_embedding_model = _backup_chat_model  # Same fallback for embeddings
 
-# First attempt to import from centralized config
-try:
-    from .config import (
+
+from .config import (
         VERSION as __version__, 
         get_version_string,
         get_author_string,
@@ -45,45 +44,18 @@ try:
         DEFAULT_EMBEDDING_MODEL,
         BACKUP_EMBEDDING_MODEL
     )
-    __author__ = get_author_string()
-    __email__ = get_email_string()
+__author__ = get_author_string()
+__email__ = get_email_string()
     
-    # Update our variables with imported values
-    _version = __version__
-    _author = __author__
-    _email = __email__
-    _ollama_api_url = DEFAULT_OLLAMA_API_URL
-    _chat_model = DEFAULT_CHAT_MODEL
-    _backup_chat_model = BACKUP_CHAT_MODEL
-    _embedding_model = DEFAULT_EMBEDDING_MODEL
-    _backup_embedding_model = BACKUP_EMBEDDING_MODEL
-    
-except ImportError:
-    # Fallback to direct imports if config not available
-    try:
-        import importlib.util
-        
-        # Try to find and import version.py from the main package directory
-        spec = importlib.util.find_spec('version')
-        if spec and spec.loader:  # Ensure loader is not None before accessing exec_module
-            version_module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(version_module)
-            __version__ = version_module.__version__
-            get_version_string = version_module.get_version_string
-            _version = __version__
-        else:
-            # Last resort fallback for standalone use
-            __version__ = _version
-            get_version_string = lambda: _version
-    except ImportError:
-        # Last resort fallback if all else fails
-        __version__ = _version
-        get_version_string = lambda: _version
-        
-    # Package metadata fallbacks
-    __author__ = _author
-    __email__ = _email
-
+# Update our variables with imported values
+_version = __version__
+_author = __author__
+_email = __email__
+_ollama_api_url = DEFAULT_OLLAMA_API_URL
+_chat_model = DEFAULT_CHAT_MODEL
+_backup_chat_model = BACKUP_CHAT_MODEL
+_embedding_model = DEFAULT_EMBEDDING_MODEL
+_backup_embedding_model = BACKUP_EMBEDDING_MODEL
 # License and URL information
 __license__ = "MIT"
 __url__ = "https://github.com/Ace1928/ollama_forge"

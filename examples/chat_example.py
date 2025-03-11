@@ -9,24 +9,15 @@ This example demonstrates various chat capabilities including:
 - System prompts
 - Error handling with fallbacks
 """
-
-import os
-import sys
-import json
-from typing import Dict, List, Any, Optional, Tuple, Union
+from typing import Dict, List, Any, Optional, Tuple
 from colorama import Fore, Style, init
 
 # Initialize colorama for cross-platform colored terminal output
 init()
 
-# Add parent directory to path for direct script execution
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if parent_dir not in sys.path:
-    sys.path.insert(0, parent_dir)
-
 from ollama_forge import OllamaClient
-from ollama_forge.helpers.common import print_header, print_success, print_error, print_info, print_warning
-from ollama_forge.helpers.model_constants import DEFAULT_CHAT_MODEL, BACKUP_CHAT_MODEL
+from helpers.common import print_header, print_error, print_info, print_warning
+from helpers.model_constants import DEFAULT_CHAT_MODEL, BACKUP_CHAT_MODEL
 
 
 def initialize_chat(model: str, system_message: Optional[str] = None) -> List[Dict[str, str]]:

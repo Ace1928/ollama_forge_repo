@@ -14,7 +14,7 @@ Following Eidosian principles of:
 
 import sys
 import argparse
-from typing import List, Optional, Dict, Any, Callable
+from typing import List, Optional, Dict, Callable
 
 # Import CLI components
 from .cli import main as cli_main

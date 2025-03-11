@@ -4,23 +4,13 @@ Tests for utility functions.
 """
 
 import io
-import json
-import os
 import sys
 import unittest
 from typing import Any, Dict
 from unittest.mock import Mock, patch, MagicMock
 
-import requests
-
-# Add the parent directory to the path before any import attempts
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-
-# Now try imports
-try:
-    from ollama_forge.helpers.common import (
+from helpers.common import (
         DEFAULT_OLLAMA_API_URL,
-        async_make_api_request,
         make_api_request,
         print_error,
         print_header,
@@ -31,13 +21,12 @@ try:
         check_ollama_running,
         ensure_ollama_running,
         check_ollama_installed,
-        install_ollama,
     )
-except ImportError as e:
-    print(f"Import error: {e}")
-    print("Make sure you've installed the package with: pip install -e .")
-    sys.exit(1)
-
+from helpers.install_ollama import (
+        check_ollama_installed,
+        ensure_ollama_running,
+        check_ollama_running,
+    )
 
 class TestHelpers(unittest.TestCase):
     """Test cases for utility functions."""
@@ -146,7 +135,7 @@ class TestHelpers(unittest.TestCase):
         self.assertEqual(result, {"result": "success"})
         session_instance.request.assert_called_once()
     
-    @patch("ollama_forge.helpers.common.subprocess.run")
+    @patch("helpers.common.subprocess.run")
     def test_check_ollama_running(self, mock_run):
         """Test check_ollama_running function."""
         # Setup mock for running Ollama
@@ -166,6 +155,7 @@ class TestHelpers(unittest.TestCase):
         is_running, message = ensure_ollama_running()
         self.assertTrue(is_running)
         self.assertIn("Ollama is ready", message)
-
+        self.assertTrue(message)
+        
 if __name__ == "__main__":
-    unittest.main()
+        unittest.main()

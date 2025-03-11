@@ -41,6 +41,9 @@ extensions = [
     "myst_parser",
 ]
 
+# Eidosian disambiguation of duplicate labels with fractal awareness 🔍
+autosectionlabel_prefix_document = True
+
 # Concise yet thorough autoapi configuration 🎯
 autoapi_type = "python"
 autoapi_dirs = ["../ollama_forge"]

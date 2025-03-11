@@ -5,8 +5,6 @@ Example script to create and manipulate embeddings using the Ollama API.
 
 # Standard library imports first
 from typing import Dict, List, Optional, Tuple, Any
-import os
-import sys
 import argparse
 import json
 from colorama import init, Fore, Style
@@ -14,17 +12,12 @@ from colorama import init, Fore, Style
 # Initialize colorama for cross-platform colored terminal output
 init()
 
-# Add parent directory to path for direct script execution
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if parent_dir not in sys.path:
-    sys.path.insert(0, parent_dir)
-
 from ollama_forge import OllamaClient
-from ollama_forge.helpers.common import print_header, print_success, print_error, print_info
-from ollama_forge.helpers.embedding import (
+from helpers.common import print_header, print_success, print_error, print_info
+from helpers.embedding import (
     calculate_similarity, normalize_vector, batch_calculate_similarities
 )
-from ollama_forge.helpers.model_constants import DEFAULT_EMBEDDING_MODEL, BACKUP_EMBEDDING_MODEL
+from helpers.model_constants import DEFAULT_EMBEDDING_MODEL, BACKUP_EMBEDDING_MODEL
 
 def create_embedding(
     text: str,

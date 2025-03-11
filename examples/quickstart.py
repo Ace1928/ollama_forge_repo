@@ -5,18 +5,12 @@ Interactive quickstart for the Ollama Forge.
 This script demonstrates the basic functionality of the Ollama Forge
 and helps users get started with using the toolkit.
 """
-
-import os
 import sys
-import time
-from typing import Dict, Optional, List, Any
+from typing import Optional, List
 
-# Add proper import paths
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-try:
-    from ollama_forge.client import OllamaClient
-    from ollama_forge.helpers.common import (
+from ollama_forge.client import OllamaClient
+from helpers.common import (
         print_header,
         print_success,
         print_error,
@@ -25,15 +19,10 @@ try:
         print_json,
         ensure_ollama_running,
     )
-    from ollama_forge.helpers.model_constants import (
+from helpers.model_constants import (
         DEFAULT_CHAT_MODEL,
         BACKUP_CHAT_MODEL,
     )
-except ImportError as e:
-    print(f"Error importing Ollama Forge modules: {e}")
-    print("Make sure the package is installed or in the Python path.")
-    sys.exit(1)
-
 
 def check_ollama_status() -> bool:
     """Check if Ollama is running and print status."""

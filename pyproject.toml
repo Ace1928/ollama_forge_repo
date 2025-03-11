@@ -122,9 +122,41 @@ disallow_untyped_decorators = true
 no_implicit_optional = true
 strict_optional = true
 
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🧪 Test Configuration - Precision and Completeness in Verification
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [tool.pytest.ini_options]
-minversion = "7.0"
-addopts = "--cov=ollama_forge --cov-report=term-missing"
-asyncio_mode = "auto"
-testpaths = ["tests"]
-python_files = "test_*.py"
+# Core test behavior - foundational settings
+minversion = "7.0"                                # Minimum pytest version required
+testpaths = ["tests"]                            # Directory containing tests
+python_files = "test_*.py"                       # Pattern for test files
+python_classes = ["Test*"]                       # Pattern for test classes
+python_functions = ["test_*"]                    # Pattern for test functions
+
+# Coverage reporting - visibility into test completeness
+addopts = "--cov=ollama_forge --cov-report=term-missing --cov-report=xml:coverage.xml --no-cov-on-fail"
+
+# Console output - clarity and focus in feedback
+console_output_style = "progress"                # Dynamic progress display
+log_cli = true                                   # Show logs in terminal
+log_cli_level = "INFO"                           # Default log level
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+
+# Async testing - seamless concurrency support
+asyncio_mode = "auto"                            # Auto-detect async tests
+asyncio_default_fixture_loop_scope = "function"  # Isolated loop per test
+
+# Execution - reliability through isolation
+xvs = true                                       # Exit on first failure
+filterwarnings = [
+    "ignore::DeprecationWarning:distutils.*:",   # Ignore common noise
+    "ignore::DeprecationWarning:pkg_resources.*:",
+    "default::DeprecationWarning",               # Show our own deprecations
+]
+
+# Integration testing - adaptable to environment
+markers = [
+    "integration: tests that require running services",
+    "slow: tests that take longer than 1 second",
+    "requires_ollama: tests that require ollama to be installed",
+]

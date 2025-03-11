@@ -4,29 +4,16 @@ Tests for the chat functionality.
 """
 
 import json
-import os
-import sys
 import unittest
-from typing import Any, Dict, List
+from typing import Any
 from unittest.mock import Mock, patch
-
-import pytest
 import requests
 
-# Add the parent directory to the path before any import attempts
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-# Now try imports
-try:
-    from ollama_forge.examples.chat_example import chat, chat_streaming, initialize_chat
-    from ollama_forge.helpers.model_constants import (
-        BACKUP_CHAT_MODEL,
+from examples.chat_example import chat, chat_streaming, initialize_chat
+from helpers.model_constants import (
         DEFAULT_CHAT_MODEL,
     )
-except ImportError as e:
-    print(f"Import error: {e}")
-    print("Make sure you've installed the package with: pip install -e .")
-    sys.exit(1)
 
 from ollama_forge import OllamaClient
 
@@ -118,15 +105,45 @@ class TestChat(unittest.TestCase):
         mock_response.raise_for_status = Mock()
         mock_post.return_value = mock_response
 
-        # Call function with test messages
+        # Test the chat_streaming helper function
         success, response = chat_streaming(
             DEFAULT_CHAT_MODEL, self.test_messages.copy()
         )
 
-        # Assert results
+        # Assert results for chat_streaming function
         self.assertTrue(success)
         self.assertEqual(response["content"], "Hello there!")
         mock_post.assert_called_once()
+        
+        # Reset mock for the next test
+        mock_post.reset_mock()
+        
+        # Test direct client.chat streaming
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Tell me about neural networks."}
+        ]
+        
+        # Configure mock for client.chat test
+        mock_post.return_value = mock_response
+        
+        try:
+            # Test client's streaming functionality
+            chunks = list(self.client.chat(
+                model=DEFAULT_CHAT_MODEL,
+                messages=messages,
+                stream=True
+            ))
+            
+            # Assert results for direct client streaming
+            self.assertGreater(len(chunks), 0)
+            self.assertIn("message", chunks[0])
+            self.assertEqual(chunks[0]["message"]["content"], "Hello")
+            self.assertEqual(chunks[1]["message"]["content"], " there")
+            self.assertEqual(chunks[2]["message"]["content"], "!")
+            self.assertTrue(chunks[2].get("done", False))
+        except Exception as e:
+            self.fail(f"Client streaming test failed: {e}")
 
     @patch("requests.post")
     def test_chat_streaming_failure(self, mock_post: Any) -> None:
@@ -169,19 +186,6 @@ class TestChat(unittest.TestCase):
             options={"temperature": 0.7}
         )
         self.assertIn("response", response)
-
-    def test_chat_streaming(self):
-        messages = [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Tell me about neural networks."}
-        ]
-        chunks = list(self.client.chat(
-            model=DEFAULT_CHAT_MODEL,
-            messages=messages,
-            stream=True
-        ))
-        self.assertGreater(len(chunks), 0)
-        self.assertIn("response", chunks[0])
 
 
 if __name__ == "__main__":

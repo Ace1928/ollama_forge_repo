@@ -1,48 +1,206 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Examples" href="examples.html" /><link rel="prev" title="Quickstart Guide" href="quickstart.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>API Reference - Ollama Forge 0.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
 
 
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; Ollama Toolkit 0.1.9 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=8618f531"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="examples.html" />
-    <link rel="prev" title="Quickstart Guide" href="quickstart.html" /> 
-</head>
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Ollama Toolkit
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Ollama Forge 0.2.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Ollama Forge 0.2.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">About the Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
@@ -50,30 +208,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">🛠️ Core Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ollamaclient">OllamaClient</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#constructor-parameters">Constructor Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#core-methods">Core Methods</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#text-generation">Text Generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#chat-completion">Chat Completion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#embeddings">Embeddings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#model-management">Model Management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#eidosian-note">Eidosian Note</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#exception-classes">Exception Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#utility-functions">Utility Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#display-functions">Display Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#api-utilities">API Utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ollama-management">Ollama Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#model-constants">Model Constants</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced_usage.html">Advanced Usage</a></li>
 </ul>
@@ -87,7 +222,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">🧠 Guides &amp; References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="conventions.html">Ollama Toolkit Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Ollama Forge Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eidosian_integration.html">Eidosian Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version Endpoint</a></li>
@@ -102,39 +237,65 @@
 <li class="toctree-l1"><a class="reference internal" href="embed.html">Generate Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models_api.html">Models API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_api.html">System API</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/ollama_forge/index.html">ollama_forge</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of ollama_forge</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/__main__/index.html">ollama_forge.__main__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/cli/index.html">ollama_forge.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/client/index.html">ollama_forge.client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/config/index.html">ollama_forge.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/exceptions/index.html">ollama_forge.exceptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Ollama Toolkit</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">API Reference</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/api_reference.md.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
-<p>This document—a precision-engineered blueprint—details all classes and methods provided by the Ollama Toolkit client.</p>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/api_reference.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
+<p>This document—a precision-engineered blueprint—details all classes and methods provided by the Ollama Forge client.</p>
 <section id="ollamaclient">
-<h2>OllamaClient<a class="headerlink" href="#ollamaclient" title="Link to this heading"></a></h2>
-<p>The main class for interacting with the Ollama Toolkit, designed with contextual integrity and recursive refinement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ollama_toolkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">OllamaClient</span>
+<h2>OllamaClient<a class="headerlink" href="#ollamaclient" title="Link to this heading">¶</a></h2>
+<p>The main class for interacting with the Ollama Forge, designed with contextual integrity and recursive refinement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ollama_forge</span><span class="w"> </span><span class="kn">import</span> <span class="n">OllamaClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ollama_forge.helpers.model_constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span> <span class="n">DEFAULT_EMBEDDING_MODEL</span>
 
 <span class="c1"># Initialize with optimal defaults - each parameter carefully calibrated</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">OllamaClient</span><span class="p">(</span>
@@ -145,13 +306,28 @@
     <span class="n">cache_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                 <span class="c1"># Toggle for performance optimization</span>
     <span class="n">cache_ttl</span><span class="o">=</span><span class="mf">300.0</span>                      <span class="c1"># Time-bounded memory efficiency</span>
 <span class="p">)</span>
+
+<span class="c1"># Generate text</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Explain quantum computing in simple terms&quot;</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">])</span>
+
+<span class="c1"># Create embedding</span>
+<span class="n">embedding</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_embedding</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_EMBEDDING_MODEL</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;This is a sample text for embedding.&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">embedding</span><span class="p">[</span><span class="s2">&quot;embedding&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <section id="constructor-parameters">
-<h3>Constructor Parameters<a class="headerlink" href="#constructor-parameters" title="Link to this heading"></a></h3>
+<h3>Constructor Parameters<a class="headerlink" href="#constructor-parameters" title="Link to this heading">¶</a></h3>
 <p>Each parameter precisely tuned for maximum effect:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">base_url</span></code> (str): The base URL of the Ollama Toolkit server. Default: “http://localhost:11434/”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_url</span></code> (str): The base URL of the Ollama Forge server. Default: “http://localhost:11434/”</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (int): Default timeout for API requests in seconds. Default: 300</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_retries</span></code> (int): Maximum number of retry attempts for failed requests. Default: 3</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">retry_delay</span></code> (float): Delay between retry attempts in seconds. Default: 1.0</p></li>
@@ -160,7 +336,7 @@
 </ul>
 </section>
 <section id="core-methods">
-<h3>Core Methods<a class="headerlink" href="#core-methods" title="Link to this heading"></a></h3>
+<h3>Core Methods<a class="headerlink" href="#core-methods" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>generate / agenerate — Text generation with precision</p></li>
 <li><p>chat / achat — Conversational flow with structure</p></li>
@@ -170,12 +346,12 @@
 </ul>
 <p>For maximum compatibility with autodoc systems, each function uses a Google-style docstring format with a brief summary, argument descriptions, and return values.</p>
 <section id="text-generation">
-<h4>Text Generation<a class="headerlink" href="#text-generation" title="Link to this heading"></a></h4>
+<h4>Text Generation<a class="headerlink" href="#text-generation" title="Link to this heading">¶</a></h4>
 <section id="generate">
-<h5>generate<a class="headerlink" href="#generate" title="Link to this heading"></a></h5>
+<h5>generate<a class="headerlink" href="#generate" title="Link to this heading">¶</a></h5>
 <p>Generate a completion for the given prompt with recursive refinement.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span>
     <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Explain quantum computing in simple terms&quot;</span><span class="p">,</span>
     <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">},</span>  <span class="c1"># Precisely tuned randomness</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
@@ -207,10 +383,10 @@
 </ul>
 </section>
 <section id="agenerate">
-<h5>agenerate<a class="headerlink" href="#agenerate" title="Link to this heading"></a></h5>
+<h5>agenerate<a class="headerlink" href="#agenerate" title="Link to this heading">¶</a></h5>
 <p>Asynchronous version of <code class="docutils literal notranslate"><span class="pre">generate</span></code>. <em>(Note: This method is planned but not fully implemented in the current version)</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">agenerate</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span>
     <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Explain quantum computing in simple terms&quot;</span><span class="p">,</span>
     <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">},</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
@@ -225,16 +401,16 @@
 </section>
 </section>
 <section id="chat-completion">
-<h4>Chat Completion<a class="headerlink" href="#chat-completion" title="Link to this heading"></a></h4>
+<h4>Chat Completion<a class="headerlink" href="#chat-completion" title="Link to this heading">¶</a></h4>
 <section id="chat">
-<h5>chat<a class="headerlink" href="#chat" title="Link to this heading"></a></h5>
+<h5>chat<a class="headerlink" href="#chat" title="Link to this heading">¶</a></h5>
 <p>Generate a chat response for the given messages.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful assistant.&quot;</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Tell me about neural networks.&quot;</span><span class="p">}</span>
 <span class="p">]</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
     <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">},</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
@@ -262,10 +438,10 @@
 </ul>
 </section>
 <section id="achat">
-<h5>achat<a class="headerlink" href="#achat" title="Link to this heading"></a></h5>
+<h5>achat<a class="headerlink" href="#achat" title="Link to this heading">¶</a></h5>
 <p>Asynchronous version of <code class="docutils literal notranslate"><span class="pre">chat</span></code>. <em>(Note: This method is planned but not fully implemented in the current version)</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">achat</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span>
     <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
     <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">},</span>
     <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
@@ -275,12 +451,12 @@
 </section>
 </section>
 <section id="embeddings">
-<h4>Embeddings<a class="headerlink" href="#embeddings" title="Link to this heading"></a></h4>
+<h4>Embeddings<a class="headerlink" href="#embeddings" title="Link to this heading">¶</a></h4>
 <section id="create-embedding">
-<h5>create_embedding<a class="headerlink" href="#create-embedding" title="Link to this heading"></a></h5>
+<h5>create_embedding<a class="headerlink" href="#create-embedding" title="Link to this heading">¶</a></h5>
 <p>Create an embedding vector for the given text.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embedding</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_embedding</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;nomic-embed-text&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_EMBEDDING_MODEL</span><span class="p">,</span>
     <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;This is a sample text for embedding.&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -304,20 +480,20 @@
 </ul>
 </section>
 <section id="acreate-embedding">
-<h5>acreate_embedding<a class="headerlink" href="#acreate-embedding" title="Link to this heading"></a></h5>
+<h5>acreate_embedding<a class="headerlink" href="#acreate-embedding" title="Link to this heading">¶</a></h5>
 <p>Asynchronous version of <code class="docutils literal notranslate"><span class="pre">create_embedding</span></code>. <em>(Note: This method is planned but not fully implemented in the current version)</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embedding</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">acreate_embedding</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;nomic-embed-text&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_EMBEDDING_MODEL</span><span class="p">,</span>
     <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;This is a sample text for embedding.&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="batch-embeddings">
-<h5>batch_embeddings<a class="headerlink" href="#batch-embeddings" title="Link to this heading"></a></h5>
+<h5>batch_embeddings<a class="headerlink" href="#batch-embeddings" title="Link to this heading">¶</a></h5>
 <p>Create embeddings for multiple prompts efficiently. <em>(Note: This method is planned but not fully implemented in the current version)</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">batch_embeddings</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;nomic-embed-text&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">DEFAULT_EMBEDDING_MODEL</span><span class="p">,</span>
     <span class="n">prompts</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Text one&quot;</span><span class="p">,</span> <span class="s2">&quot;Text two&quot;</span><span class="p">,</span> <span class="s2">&quot;Text three&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
@@ -335,9 +511,9 @@
 </section>
 </section>
 <section id="model-management">
-<h4>Model Management<a class="headerlink" href="#model-management" title="Link to this heading"></a></h4>
+<h4>Model Management<a class="headerlink" href="#model-management" title="Link to this heading">¶</a></h4>
 <section id="list-models">
-<h5>list_models<a class="headerlink" href="#list-models" title="Link to this heading"></a></h5>
+<h5>list_models<a class="headerlink" href="#list-models" title="Link to this heading">¶</a></h5>
 <p>List available models.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_models</span><span class="p">()</span>
 </pre></div>
@@ -360,9 +536,9 @@
 </ul>
 </section>
 <section id="get-model-info">
-<h5>get_model_info<a class="headerlink" href="#get-model-info" title="Link to this heading"></a></h5>
+<h5>get_model_info<a class="headerlink" href="#get-model-info" title="Link to this heading">¶</a></h5>
 <p>Get information about a specific model. <em>(Note: This method is planned but not fully implemented in the current version)</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_model_info</span><span class="p">(</span><span class="s2">&quot;llama2&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_model_info</span><span class="p">(</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Parameters</strong>:</p>
@@ -375,13 +551,13 @@
 </ul>
 </section>
 <section id="pull-model">
-<h5>pull_model<a class="headerlink" href="#pull-model" title="Link to this heading"></a></h5>
+<h5>pull_model<a class="headerlink" href="#pull-model" title="Link to this heading">¶</a></h5>
 <p>Pull a model from the Ollama registry.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Non-streaming</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">pull_model</span><span class="p">(</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">pull_model</span><span class="p">(</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Streaming with progress updates</span>
-<span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">pull_model</span><span class="p">(</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">pull_model</span><span class="p">(</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Progress: </span><span class="si">{</span><span class="n">update</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -404,9 +580,9 @@
 </ul>
 </section>
 <section id="delete-model">
-<h5>delete_model<a class="headerlink" href="#delete-model" title="Link to this heading"></a></h5>
+<h5>delete_model<a class="headerlink" href="#delete-model" title="Link to this heading">¶</a></h5>
 <p>Delete a model.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">success</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete_model</span><span class="p">(</span><span class="s2">&quot;llama2&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">success</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">delete_model</span><span class="p">(</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Parameters</strong>:</p>
@@ -419,9 +595,9 @@
 </ul>
 </section>
 <section id="copy-model">
-<h5>copy_model<a class="headerlink" href="#copy-model" title="Link to this heading"></a></h5>
+<h5>copy_model<a class="headerlink" href="#copy-model" title="Link to this heading">¶</a></h5>
 <p>Copy a model to a new name. <em>(Note: This method is planned but not fully implemented in the current version)</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">copy_model</span><span class="p">(</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span> <span class="s2">&quot;my-llama2-copy&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">copy_model</span><span class="p">(</span><span class="n">DEFAULT_CHAT_MODEL</span><span class="p">,</span> <span class="s2">&quot;my-model-copy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Parameters</strong>:</p>
@@ -436,9 +612,9 @@
 </section>
 </section>
 <section id="miscellaneous">
-<h4>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a></h4>
+<h4>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading">¶</a></h4>
 <section id="get-version">
-<h5>get_version<a class="headerlink" href="#get-version" title="Link to this heading"></a></h5>
+<h5>get_version<a class="headerlink" href="#get-version" title="Link to this heading">¶</a></h5>
 <p>Get the Ollama version.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">version</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_version</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ollama version: </span><span class="si">{</span><span class="n">version</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -450,14 +626,14 @@
 </ul>
 </section>
 <section id="aget-version">
-<h5>aget_version<a class="headerlink" href="#aget-version" title="Link to this heading"></a></h5>
+<h5>aget_version<a class="headerlink" href="#aget-version" title="Link to this heading">¶</a></h5>
 <p>Asynchronous version of <code class="docutils literal notranslate"><span class="pre">get_version</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">version</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">aget_version</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="messages-to-prompt">
-<h5>_messages_to_prompt<a class="headerlink" href="#messages-to-prompt" title="Link to this heading"></a></h5>
+<h5>_messages_to_prompt<a class="headerlink" href="#messages-to-prompt" title="Link to this heading">¶</a></h5>
 <p>Convert chat messages to a unified prompt string for models that don’t support chat format.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">_messages_to_prompt</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
 </pre></div>
@@ -472,9 +648,9 @@
 </ul>
 </section>
 <section id="is-likely-embedding-model">
-<h5>_is_likely_embedding_model<a class="headerlink" href="#is-likely-embedding-model" title="Link to this heading"></a></h5>
+<h5>_is_likely_embedding_model<a class="headerlink" href="#is-likely-embedding-model" title="Link to this heading">¶</a></h5>
 <p>Check if a model is likely to be an embedding-only model based on name patterns.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_embedding</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">_is_likely_embedding_model</span><span class="p">(</span><span class="s2">&quot;nomic-embed-text&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_embedding</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">_is_likely_embedding_model</span><span class="p">(</span><span class="n">DEFAULT_EMBEDDING_MODEL</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Parameters</strong>:</p>
@@ -489,7 +665,7 @@
 </section>
 </section>
 <section id="eidosian-note">
-<h3>Eidosian Note<a class="headerlink" href="#eidosian-note" title="Link to this heading"></a></h3>
+<h3>Eidosian Note<a class="headerlink" href="#eidosian-note" title="Link to this heading">¶</a></h3>
 <p>We strive for recursive excellence:</p>
 <ul class="simple">
 <li><p><strong>Recursive Refinement:</strong> Each function evolves toward perfection through rigorous testing and user feedback</p></li>
@@ -500,10 +676,10 @@
 </section>
 </section>
 <section id="exception-classes">
-<h2>Exception Classes<a class="headerlink" href="#exception-classes" title="Link to this heading"></a></h2>
+<h2>Exception Classes<a class="headerlink" href="#exception-classes" title="Link to this heading">¶</a></h2>
 <p>The package provides precisely engineered exception types for clear error handling:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OllamaAPIError</span></code>: Base exception class for all Ollama Toolkit errors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OllamaAPIError</span></code>: Base exception class for all Ollama Forge errors</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ConnectionError</span></code>: Raised when connection to the API fails</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code>: Raised when an API request times out</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ModelNotFoundError</span></code>: Raised when a requested model is not found</p></li>
@@ -518,10 +694,10 @@
 </ul>
 </section>
 <section id="utility-functions">
-<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading"></a></h2>
-<p>The package provides several utility functions in <code class="docutils literal notranslate"><span class="pre">ollama_toolkit.utils.common</span></code>:</p>
+<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h2>
+<p>The package provides several utility functions in <code class="docutils literal notranslate"><span class="pre">ollama_forge.helpers.common</span></code>:</p>
 <section id="display-functions">
-<h3>Display Functions<a class="headerlink" href="#display-functions" title="Link to this heading"></a></h3>
+<h3>Display Functions<a class="headerlink" href="#display-functions" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">print_header(title)</span></code>: Print a formatted header</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">print_success(message)</span></code>: Print a success message in green</p></li>
@@ -532,14 +708,14 @@
 </ul>
 </section>
 <section id="api-utilities">
-<h3>API Utilities<a class="headerlink" href="#api-utilities" title="Link to this heading"></a></h3>
+<h3>API Utilities<a class="headerlink" href="#api-utilities" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">make_api_request(method,</span> <span class="pre">endpoint,</span> <span class="pre">data=None,</span> <span class="pre">base_url=DEFAULT_OLLAMA_API_URL,</span> <span class="pre">timeout=300)</span></code>: Make a synchronous API request</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">async_make_api_request(method,</span> <span class="pre">endpoint,</span> <span class="pre">data=None,</span> <span class="pre">base_url=DEFAULT_OLLAMA_API_URL,</span> <span class="pre">timeout=300)</span></code>: Make an asynchronous API request</p></li>
 </ul>
 </section>
 <section id="ollama-management">
-<h3>Ollama Management<a class="headerlink" href="#ollama-management" title="Link to this heading"></a></h3>
+<h3>Ollama Management<a class="headerlink" href="#ollama-management" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">check_ollama_installed()</span></code>: Check if Ollama is installed on the system</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">check_ollama_running()</span></code>: Check if Ollama server is running</p></li>
@@ -549,8 +725,8 @@
 </ul>
 </section>
 <section id="model-constants">
-<h3>Model Constants<a class="headerlink" href="#model-constants" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">ollama_toolkit.utils.model_constants</span></code> module provides:</p>
+<h3>Model Constants<a class="headerlink" href="#model-constants" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">ollama_forge.helpers.model_constants</span></code> module provides:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_CHAT_MODEL</span></code>: Default model for chat completions</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BACKUP_CHAT_MODEL</span></code>: Fallback model for chat completions</p></li>
@@ -564,35 +740,125 @@
 </section>
 </section>
 
-
-           </div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="examples.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Examples</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="quickstart.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Quickstart Guide</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Lloyd Handyside
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#ollamaclient">OllamaClient</a><ul>
+<li><a class="reference internal" href="#constructor-parameters">Constructor Parameters</a></li>
+<li><a class="reference internal" href="#core-methods">Core Methods</a><ul>
+<li><a class="reference internal" href="#text-generation">Text Generation</a><ul>
+<li><a class="reference internal" href="#generate">generate</a></li>
+<li><a class="reference internal" href="#agenerate">agenerate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chat-completion">Chat Completion</a><ul>
+<li><a class="reference internal" href="#chat">chat</a></li>
+<li><a class="reference internal" href="#achat">achat</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#embeddings">Embeddings</a><ul>
+<li><a class="reference internal" href="#create-embedding">create_embedding</a></li>
+<li><a class="reference internal" href="#acreate-embedding">acreate_embedding</a></li>
+<li><a class="reference internal" href="#batch-embeddings">batch_embeddings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-management">Model Management</a><ul>
+<li><a class="reference internal" href="#list-models">list_models</a></li>
+<li><a class="reference internal" href="#get-model-info">get_model_info</a></li>
+<li><a class="reference internal" href="#pull-model">pull_model</a></li>
+<li><a class="reference internal" href="#delete-model">delete_model</a></li>
+<li><a class="reference internal" href="#copy-model">copy_model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li><a class="reference internal" href="#get-version">get_version</a></li>
+<li><a class="reference internal" href="#aget-version">aget_version</a></li>
+<li><a class="reference internal" href="#messages-to-prompt">_messages_to_prompt</a></li>
+<li><a class="reference internal" href="#is-likely-embedding-model">_is_likely_embedding_model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eidosian-note">Eidosian Note</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exception-classes">Exception Classes</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility Functions</a><ul>
+<li><a class="reference internal" href="#display-functions">Display Functions</a></li>
+<li><a class="reference internal" href="#api-utilities">API Utilities</a></li>
+<li><a class="reference internal" href="#ollama-management">Ollama Management</a></li>
+<li><a class="reference internal" href="#model-constants">Model Constants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2025, Lloyd Handyside.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          </div>
         </div>
       </div>
-    </section>
+      
+      
+    </aside>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+</div><script src="_static/documentation_options.js?v=938c9ccc"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=4ea706d9"></script>
+    </body>
 </html>

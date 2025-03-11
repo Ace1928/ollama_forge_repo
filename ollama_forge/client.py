@@ -507,7 +507,16 @@ class OllamaClient:
         response = self._with_retry("POST", endpoint, data=data)
         if response is None:
             raise OllamaAPIError(f"Failed to create embedding with model '{model}'")
-        return response.json()
+        
+        # Get the response data
+        response_data = response.json()
+        
+        # Add the 'embedding' key if it doesn't exist but 'embeddings' does
+        if 'embeddings' in response_data and not 'embedding' in response_data:
+            if response_data['embeddings'] and len(response_data['embeddings']) > 0:
+                response_data['embedding'] = response_data['embeddings'][0]
+        
+        return response_data
     
     def batch_embeddings(
         self, 

@@ -10,20 +10,14 @@ Following Eidosian principles of exhaustive but concise implementation.
 from typing import Dict, List, Tuple, Any, Optional, Union
 import logging
 import math
-
-# Try to import numpy for vector operations
-try:
-    import numpy as np
-    NUMPY_AVAILABLE = True
-except ImportError:
-    NUMPY_AVAILABLE = False
+import numpy as np
 
 logger = logging.getLogger(__name__)
 
 
 def calculate_similarity(vec1: List[float], vec2: List[float]) -> float:
     """
-    Calculate cosine similarity between two vectors with elegant fallbacks.
+    Calculate cosine similarity between two vectors
     
     Args:
         vec1: First vector
@@ -41,32 +35,19 @@ def calculate_similarity(vec1: List[float], vec2: List[float]) -> float:
     if len(vec1) != len(vec2):
         raise ValueError(f"Vector dimensions don't match: {len(vec1)} vs {len(vec2)}")
     
-    # Choose the most efficient implementation based on available libraries
-    if NUMPY_AVAILABLE:
-        # NumPy implementation - fastest for large vectors
-        v1 = np.array(vec1)
-        v2 = np.array(vec2)
-        norm1 = np.linalg.norm(v1)
-        norm2 = np.linalg.norm(v2)
+    
+    # NumPy implementation
+    v1 = np.array(vec1)
+    v2 = np.array(vec2)
+    norm1 = np.linalg.norm(v1)
+    norm2 = np.linalg.norm(v2)
         
-        # Handle zero vectors gracefully
-        if norm1 == 0 or norm2 == 0:
-            return 0.0
+    # Handle zero vectors gracefully
+    if norm1 == 0 or norm2 == 0:
+        return 0.0
             
-        return np.dot(v1, v2) / (norm1 * norm2)
+    return np.dot(v1, v2) / (norm1 * norm2)
         
-    else:
-        # Pure Python implementation - works without dependencies
-        dot_product = sum(a * b for a, b in zip(vec1, vec2))
-        norm1 = math.sqrt(sum(a * a for a in vec1))
-        norm2 = math.sqrt(sum(b * b for b in vec2))
-        
-        # Handle zero vectors gracefully
-        if norm1 == 0 or norm2 == 0:
-            return 0.0
-            
-        return dot_product / (norm1 * norm2)
-
 
 def normalize_vector(vector: List[float]) -> List[float]:
     """

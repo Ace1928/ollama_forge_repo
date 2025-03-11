@@ -2,32 +2,19 @@
 """
 Tests for the embedding functionality.
 """
-
-import os
-import sys
 import unittest
-from typing import Any, Dict, List
+from typing import Any
 from unittest.mock import Mock, patch
 
-import numpy as np
-
-# Add the parent directory to the path before any import attempts
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-
-# Now try imports
-try:
-    from ollama_forge.examples.embedding_example import (
+from examples.basic_usage import create_embeddings
+# Add this import for the create_embedding tests
+from examples.basic_usage import create_embeddings as create_embedding
+from helpers.embedding import (
         calculate_similarity,
-        create_embedding,
     )
-    from ollama_forge.helpers.model_constants import (
-        BACKUP_EMBEDDING_MODEL,
+from helpers.model_constants import (
         DEFAULT_EMBEDDING_MODEL,
     )
-except ImportError as e:
-    print(f"Import error: {e}")
-    print("Make sure you've installed the package with: pip install -e .")
-    sys.exit(1)
 
 from ollama_forge import OllamaClient
 
@@ -44,7 +31,7 @@ class TestEmbeddings(unittest.TestCase):
         mock_post.return_value = mock_response
 
         # Call function
-        result = create_embedding(DEFAULT_EMBEDDING_MODEL, "Test text")
+        result = create_embedding(client = OllamaClient(), model = DEFAULT_EMBEDDING_MODEL)
 
         # Assert results
         mock_post.assert_called_once()

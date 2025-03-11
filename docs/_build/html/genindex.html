@@ -1,45 +1,204 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 --><title>Index - Ollama Forge 0.2.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
 
 
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Ollama Toolkit 0.1.9 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=8618f531"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
-</head>
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Ollama Toolkit
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Ollama Forge 0.2.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Ollama Forge 0.2.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">About the Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
@@ -61,7 +220,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">🧠 Guides &amp; References</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="conventions.html">Ollama Toolkit Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Ollama Forge Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eidosian_integration.html">Eidosian Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="version.html">Version Endpoint</a></li>
@@ -76,64 +235,668 @@
 <li class="toctree-l1"><a class="reference internal" href="embed.html">Generate Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models_api.html">Models API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_api.html">System API</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/ollama_forge/index.html">ollama_forge</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of ollama_forge</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/__main__/index.html">ollama_forge.__main__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/cli/index.html">ollama_forge.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/client/index.html">ollama_forge.client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/config/index.html">ollama_forge.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/ollama_forge/exceptions/index.html">ollama_forge.exceptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
-        </div>
+</div>
+</div>
+
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Ollama Toolkit</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Index</li>
-      <li class="wy-breadcrumbs-aside">
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
-
-           </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2025, Lloyd Handyside.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
         </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+        <article role="main" id="furo-main-content">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#_"><strong>_</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a></div>
+</section>
+<section id="_" class="genindex-section">
+  <h2>_</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaAPIError.__str__">__str__() (ollama_forge.exceptions.OllamaAPIError method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
 
-</body>
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.achat">achat() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.achat">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.achat">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.acreate_embedding">acreate_embedding() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.acreate_embedding">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.acreate_embedding">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.agenerate">agenerate() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.agenerate">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.agenerate">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.API_ENDPOINTS">API_ENDPOINTS (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/index.html#ollama_forge.AsyncOllamaClient">AsyncOllamaClient (in module ollama_forge)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.AUTHORS">AUTHORS (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.BACKUP_CHAT_MODEL">BACKUP_CHAT_MODEL (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.BACKUP_EMBEDDING_MODEL">BACKUP_EMBEDDING_MODEL (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#id0">base_url (ollama_forge.client.OllamaClient attribute)</a>, <a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.base_url">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.base_url">[2]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.base_url">(ollama_forge.OllamaClient attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.batch_embeddings">batch_embeddings() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.batch_embeddings">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.batch_embeddings">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.BUILD_TIMESTAMP">BUILD_TIMESTAMP (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.calculate_context_size">calculate_context_size() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.calculate_context_size">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.calculate_timeout">calculate_timeout() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.calculate_timeout">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.chat">chat() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.chat">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.chat">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/__main__/index.html#ollama_forge.__main__.command_router">command_router() (in module ollama_forge.__main__)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.configure_log_level">configure_log_level() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.configure_log_level">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.configure_progress_bars">configure_progress_bars() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.configure_progress_bars">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.configure_user_directories">configure_user_directories() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.configure_user_directories">[1]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.ConnectionError">ConnectionError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.ConnectionError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.ConnectionError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.copy_model">copy_model() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.copy_model">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.copy_model">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.CPU_COUNT">CPU_COUNT (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.create_embedding">create_embedding() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.create_embedding">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.create_embedding">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.create_model">create_model() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.create_model">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.create_model">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.create_parser">create_parser() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.create_parser">[1]</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEBUG_MODE">DEBUG_MODE (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEFAULT_CHAT_MODEL">DEFAULT_CHAT_MODEL (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEFAULT_EMBEDDING_MODEL">DEFAULT_EMBEDDING_MODEL (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEFAULT_MAX_RETRIES">DEFAULT_MAX_RETRIES (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEFAULT_MIN_CONTEXT">DEFAULT_MIN_CONTEXT (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEFAULT_OLLAMA_API_URL">DEFAULT_OLLAMA_API_URL (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DEFAULT_TIMEOUT">DEFAULT_TIMEOUT (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.delete_model">delete_model() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.delete_model">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.delete_model">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.DISABLE_PROGRESS_BARS">DISABLE_PROGRESS_BARS (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.ERROR_CODE_MAP">ERROR_CODE_MAP (in module ollama_forge.exceptions)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.F">F (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.fallback_context">fallback_context() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.fallback_context">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.fallback_context">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.generate">generate() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.generate">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.generate">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_author_string">get_author_string() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_author_string">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/index.html#ollama_forge.get_backup_chat_model">get_backup_chat_model() (in module ollama_forge)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.get_backup_chat_model">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/index.html#ollama_forge.get_backup_embedding_model">get_backup_embedding_model() (in module ollama_forge)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.get_backup_embedding_model">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_build_age">get_build_age() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_build_age">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_config_summary">get_config_summary() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_config_summary">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_default_api_endpoint">get_default_api_endpoint() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_default_api_endpoint">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/index.html#ollama_forge.get_default_api_url">get_default_api_url() (in module ollama_forge)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.get_default_api_url">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/index.html#ollama_forge.get_default_chat_model">get_default_chat_model() (in module ollama_forge)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.get_default_chat_model">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/index.html#ollama_forge.get_default_embedding_model">get_default_embedding_model() (in module ollama_forge)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.get_default_embedding_model">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_email_string">get_email_string() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_email_string">[1]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.get_exception_for_status">get_exception_for_status() (in module ollama_forge.exceptions)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.get_exception_for_status">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.get_fallback_info">get_fallback_info() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.get_fallback_info">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.get_fallback_info">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_optimal_batch_size">get_optimal_batch_size() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_optimal_batch_size">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_package_age">get_package_age() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_package_age">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_release_date">get_release_date() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_release_date">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_runtime_config">get_runtime_config() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_runtime_config">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_system_info">get_system_info() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_system_info">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.get_version">get_version() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.get_version">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.get_version">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+        <li><a href="docs/api/ollama_forge.html#ollama_forge.get_version_string">get_version_string() (in module ollama_forge)</a>
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_version_string">(in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_version_string">[1]</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.get_version_tuple">get_version_tuple() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.get_version_tuple">[1]</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.handle_chat">handle_chat() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.handle_chat">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.handle_chat_session">handle_chat_session() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.handle_chat_session">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.handle_embed">handle_embed() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.handle_embed">[1]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.handle_generate">handle_generate() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.handle_generate">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.handle_list">handle_list() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.handle_list">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.handle_pull">handle_pull() (in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.handle_pull">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.HELPERS_AVAILABLE">HELPERS_AVAILABLE (in module ollama_forge.client)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.InvalidRequestError">InvalidRequestError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.InvalidRequestError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.InvalidRequestError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_ARM64">IS_ARM64 (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_CI_ENV">IS_CI_ENV (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_CONTAINER">IS_CONTAINER (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.is_debug_mode">is_debug_mode() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.is_debug_mode">[1]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_LINUX">IS_LINUX (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_MACOS">IS_MACOS (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.is_string">is_string() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.is_string">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_WINDOWS">IS_WINDOWS (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.IS_X86_64">IS_X86_64 (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.list_models">list_models() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.list_models">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.list_models">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.LOG_LEVEL">LOG_LEVEL (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.logger">logger (in module ollama_forge.client)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/__main__/index.html#ollama_forge.__main__.main">main() (in module ollama_forge.__main__)</a>
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/cli/index.html#ollama_forge.cli.main">(in module ollama_forge.cli)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.cli.main">[1]</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/client/index.html#id2">max_retries (ollama_forge.client.OllamaClient attribute)</a>, <a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.max_retries">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.max_retries">[2]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.max_retries">(ollama_forge.OllamaClient attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.MEMORY_MB">MEMORY_MB (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaAPIError.message">message (ollama_forge.exceptions.OllamaAPIError attribute)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.ModelNotFoundError">ModelNotFoundError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.ModelNotFoundError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.ModelNotFoundError">[2]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    module
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/index.html#module-ollama_forge">ollama_forge</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge">[1]</a>
+</li>
+          <li><a href="autoapi/ollama_forge/__main__/index.html#module-ollama_forge.__main__">ollama_forge.__main__</a>
+</li>
+          <li><a href="autoapi/ollama_forge/cli/index.html#module-ollama_forge.cli">ollama_forge.cli</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.cli">[1]</a>
+</li>
+          <li><a href="autoapi/ollama_forge/client/index.html#module-ollama_forge.client">ollama_forge.client</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.client">[1]</a>
+</li>
+          <li><a href="autoapi/ollama_forge/config/index.html#module-ollama_forge.config">ollama_forge.config</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.config">[1]</a>
+</li>
+          <li><a href="autoapi/ollama_forge/exceptions/index.html#module-ollama_forge.exceptions">ollama_forge.exceptions</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.exceptions">[1]</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/__main__/index.html#ollama_forge.__main__.module_entry">module_entry() (in module ollama_forge.__main__)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    ollama_forge
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/index.html#module-ollama_forge">module</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge">[1]</a>
+</li>
+        </ul></li>
+        <li>
+    ollama_forge.__main__
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/__main__/index.html#module-ollama_forge.__main__">module</a>
+</li>
+        </ul></li>
+        <li>
+    ollama_forge.cli
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/cli/index.html#module-ollama_forge.cli">module</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.cli">[1]</a>
+</li>
+        </ul></li>
+        <li>
+    ollama_forge.client
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/client/index.html#module-ollama_forge.client">module</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.client">[1]</a>
+</li>
+        </ul></li>
+        <li>
+    ollama_forge.config
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/config/index.html#module-ollama_forge.config">module</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.config">[1]</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    ollama_forge.exceptions
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/exceptions/index.html#module-ollama_forge.exceptions">module</a>, <a href="docs/api/ollama_forge.html#module-ollama_forge.exceptions">[1]</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaAPIError">OllamaAPIError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.OllamaAPIError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.OllamaAPIError">[2]</a>
+</li>
+        <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient">OllamaClient (class in ollama_forge)</a>
+
+        <ul>
+          <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient">(class in ollama_forge.client)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient">[1]</a>
+</li>
+          <li><a href="autoapi/ollama_forge/index.html#ollama_forge.OllamaClient">(in module ollama_forge)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaConnectionError">OllamaConnectionError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.OllamaConnectionError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.OllamaConnectionError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaModelNotFoundError">OllamaModelNotFoundError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.OllamaModelNotFoundError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.OllamaModelNotFoundError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaServerError">OllamaServerError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.OllamaServerError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.OllamaServerError">[2]</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.PACKAGE_BIRTHDAY">PACKAGE_BIRTHDAY (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.PACKAGE_NAME">PACKAGE_NAME (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.PACKAGE_NAME_NORMALIZED">PACKAGE_NAME_NORMALIZED (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/__main__/index.html#ollama_forge.__main__.parse_args">parse_args() (in module ollama_forge.__main__)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.ParseError">ParseError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.ParseError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.ParseError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.pull_model">pull_model() (ollama_forge.client.OllamaClient method)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.pull_model">[1]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.pull_model">(ollama_forge.OllamaClient method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.RECOMMENDED_CONTEXT">RECOMMENDED_CONTEXT (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.reset_runtime_config">reset_runtime_config() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.reset_runtime_config">[1]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.OllamaAPIError.response">response (ollama_forge.exceptions.OllamaAPIError attribute)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.runtime_config">runtime_config (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.safe_dict_get">safe_dict_get() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.safe_dict_get">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.safe_sysconf">safe_sysconf() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.safe_sysconf">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.ServerError">ServerError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.ServerError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.ServerError">[2]</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.session">session (ollama_forge.client.OllamaClient attribute)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.StreamingError">StreamingError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.StreamingError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.StreamingError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.SYSTEM">SYSTEM (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.T">T (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#id1">timeout (ollama_forge.client.OllamaClient attribute)</a>, <a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.OllamaClient.timeout">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.client.OllamaClient.timeout">[2]</a>
+
+        <ul>
+          <li><a href="docs/api/ollama_forge.html#ollama_forge.OllamaClient.timeout">(ollama_forge.OllamaClient attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.TimeoutError">TimeoutError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.TimeoutError">[1]</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.TimeoutError">[2]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/client/index.html#ollama_forge.client.TQDM_AVAILABLE">TQDM_AVAILABLE (in module ollama_forge.client)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.update_runtime_config">update_runtime_config() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.update_runtime_config">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.USER_CACHE_DIR">USER_CACHE_DIR (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.USER_CONFIG_DIR">USER_CONFIG_DIR (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.USER_DATA_DIR">USER_DATA_DIR (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.user_dirs">user_dirs (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.validate_input">validate_input() (in module ollama_forge.config)</a>, <a href="docs/api/ollama_forge.html#ollama_forge.config.validate_input">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/exceptions/index.html#ollama_forge.exceptions.ValidationError">ValidationError</a>, <a href="docs/api/ollama_forge.html#ollama_forge.exceptions.ValidationError">[1]</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.VERBOSE_MODE">VERBOSE_MODE (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.VERSION">VERSION (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.VERSION_MAJOR">VERSION_MAJOR (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.VERSION_MINOR">VERSION_MINOR (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.VERSION_PATCH">VERSION_PATCH (in module ollama_forge.config)</a>
+</li>
+        <li><a href="autoapi/ollama_forge/config/index.html#ollama_forge.config.VERSION_RELEASE_DATE">VERSION_RELEASE_DATE (in module ollama_forge.config)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Lloyd Handyside
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=938c9ccc"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=4ea706d9"></script>
+    </body>
 </html>

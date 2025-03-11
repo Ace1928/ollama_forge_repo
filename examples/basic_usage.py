@@ -5,9 +5,6 @@ Basic usage examples for the Ollama Forge client.
 This script provides simple, clean examples of the core functionality
 to help users quickly understand how to use the client.
 """
-
-import os
-import sys
 import time
 from typing import List, Callable
 
@@ -15,7 +12,7 @@ from typing import List, Callable
 from ollama_forge import OllamaClient
 
 # Import constants from model_constants
-from ollama_forge.helpers.model_constants import (
+from helpers.model_constants import (
     DEFAULT_CHAT_MODEL,
     DEFAULT_EMBEDDING_MODEL
 )
@@ -23,7 +20,7 @@ from ollama_forge.helpers.model_constants import (
 # Define printer function type for strict typing
 PrinterFunc = Callable[[str], None]
 
-from ollama_forge.helpers.common import (
+from helpers.common import (
     print_header,
     print_success,
     print_error,

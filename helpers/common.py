@@ -281,26 +281,17 @@ def install_ollama(target_dir: Optional[str] = None) -> Tuple[bool, str]:
 
 
 def ensure_ollama_running() -> Tuple[bool, str]:
-    """
-    Ensure that Ollama is installed and running.
-    Attempts to install if not found and start the service if not running.
+    """Ensure Ollama server is running, optionally starting it if needed.
     
     Returns:
-        Tuple of (is_ready, message)
+        Tuple[bool, str]: (is_running, message)
     """
-    # First check if already running
-    is_running, _ = check_ollama_running()  # Changed to _ to avoid unused variable
+    is_running, message = check_ollama_running()
     if is_running:
-        return True, "Ollama is ready"
+        version = get_ollama_version()
+        return True, f"Ollama is ready (version {version})"
     
-    # If not running, check if installed
-    if not check_ollama_installed():
-        # Try to install Ollama
-        success, install_message = install_ollama()
-        if not success:
-            return False, f"Ollama not installed and installation failed: {install_message}"
-    
-    # Try to start Ollama
+    # Not running, try to start it
     system = platform.system().lower()
     try:
         if system in ("linux", "darwin"):

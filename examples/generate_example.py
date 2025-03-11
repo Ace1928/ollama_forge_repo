@@ -5,22 +5,14 @@ Example script for generating text using the Ollama API.
 This example demonstrates both streaming and non-streaming text generation,
 with various parameter configurations and proper error handling.
 """
-
-import os
-import sys
 import time
-from typing import Dict, Any, Optional
-
-# Add parent directory to path for direct script execution
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if parent_dir not in sys.path:
-    sys.path.insert(0, parent_dir)
+from typing import Optional
 
 from ollama_forge import OllamaClient
-from ollama_forge.helpers.common import (
+from helpers.common import (
     print_header, print_success, print_error, print_info, print_warning
 )
-from ollama_forge.helpers.model_constants import DEFAULT_CHAT_MODEL, BACKUP_CHAT_MODEL
+from helpers.model_constants import DEFAULT_CHAT_MODEL, BACKUP_CHAT_MODEL
 
 def generate_text(
     prompt: str,

@@ -9,9 +9,9 @@ Built with Eidosian principles to ensure both power and simplicity.
 import argparse
 import sys
 import textwrap
-from typing import List, Optional, Any, Dict, Union
+from typing import List, Optional
 
-from . import __version__, DEFAULT_CHAT_MODEL, DEFAULT_EMBEDDING_MODEL
+from .config import get_version_string, DEFAULT_CHAT_MODEL, DEFAULT_EMBEDDING_MODEL
 from .client import OllamaClient
 
 
@@ -35,7 +35,7 @@ def create_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
-        "--version", action="version", version=f"Ollama Forge v{__version__}"
+        "--version", action="version", version=f"Ollama Forge v{get_version_string()}",
     )
     parser.add_argument(
         "--api-url",
