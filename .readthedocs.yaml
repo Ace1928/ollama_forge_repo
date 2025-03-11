@@ -1,30 +1,49 @@
-# Read the Docs configuration file for Ollama Forge
-# For details, see: https://docs.readthedocs.io/en/stable/config-file/v2.html
+# 🌀 ReadTheDocs configuration - Eidosian harmony for documentation! 📚✨
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃              R E A D T H E D O C S   C O N F I G             ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-version: 2
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 📋 Version declaration - Protocol adherence with mathematical precision
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+version: 2  # ReadTheDocs configuration format version
 
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🏗️ Build environment - Foundation with structural integrity
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 build:
-  os: ubuntu-24.04
+  os: ubuntu-24.04  # LTS version for stability and consistency
   tools:
-    python: "3.12"
+    python: "3.12"  # Latest stable Python for maximum performance
   jobs:
     pre_build:
-      - python -m pip install --upgrade pip
-      - python -c "import pathlib; docs_index = pathlib.Path('docs/index.md'); docs_index.exists() or exit('Missing docs/index.md')"
+      # Self-awareness as foundation - know what we're building
+      - echo "📊 Building docs for Ollama Forge v$(python -c 'import ollama_forge; print(ollama_forge.__version__)')"
+      - echo "🔍 Python $(python --version)"
+      - echo "🧩 Sphinx $(pip show sphinx | grep Version)"
 
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🐍 Python environment - Precision as style, flow like a river
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 python:
   install:
-    - requirements: docs/requirements.txt
     - method: pip
-      path: .
+      path: .  # Install the package itself first
       extra_requirements:
-        - docs
+        - docs  # Install documentation extras from pyproject.toml
+    - requirements: docs/requirements.txt  # Additional Sphinx dependencies
 
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 📘 Sphinx configuration - Structure as control
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 sphinx:
-  configuration: docs/conf.py
-  fail_on_warning: true
+  configuration: docs/conf.py  # Central source of truth
+  fail_on_warning: true  # Precision demands perfection
 
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 📦 Output formats - Exhaustive but concise delivery
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 formats:
-  - pdf
-  - epub
-  - htmlzip
+  - htmlzip  # Compressed HTML for efficient distribution
+  - pdf      # Professional PDF for offline reading
+  - epub     # E-reader compatibility for universal access

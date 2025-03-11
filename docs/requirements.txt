@@ -1,3 +1,26 @@
-sphinx
-sphinx-rtd-theme
-myst-parser
+# 🌀 Documentation requirements - Eidosian architecture of knowledge! 📚🔍
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🔄 CORE DEPENDENCIES  ┃ 
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
+sphinx>=6.1.3             # Documentation generation engine - the foundation
+sphinx-rtd-theme>=1.2.0   # Read the Docs theme - elegant and familiar
+myst-parser>=1.0.0        # Markdown support - flow like a river between formats
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ ✨ ENHANCEMENTS       ┃ 
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
+sphinx-copybutton>=0.5.1       # One-click code copying - velocity as intelligence
+sphinx-autodoc-typehints>=1.22.0  # Type hints in documentation - precision as style
+sphinx-autobuild>=2021.3.14    # Live rebuilding - recursive refinement in action
+sphinx-design>=0.5.0           # Advanced components - structure as control
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🎯 SPECIFIC FORMATS   ┃ 
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
+sphinxcontrib-applehelp>=1.0.4  # Apple Help support - universal compatibility
+sphinxcontrib-devhelp>=1.0.2    # DevHelp support - developer friendliness
+sphinxcontrib-htmlhelp>=2.0.0   # HTML help - classic accessibility
+sphinxcontrib-qthelp>=1.0.3     # Qt Help - cross-platform integration
+sphinxcontrib-serializinghtml>=1.1.5  # Serialized HTML - deployment flexibility
