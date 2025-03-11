@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# 🌀 PyPI publishing made Eidosian – swift, thorough, and humorous! 🔥
 # Prepare and publish ollama_forge package to PyPI
 # Usage: ./publish_to_pypi.sh [--test]
 # Add --test flag to publish to Test PyPI instead of production

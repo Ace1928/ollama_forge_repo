@@ -1,52 +1,51 @@
 #!/usr/bin/env bash
 # Build documentation for ollama_forge
-# Following Eidosian principles of precision, structured flow, and self-awareness
+# ✨ Eidosian Refinement: Concise, Precise, Structured Flow ⚙️
+# Humor included to lighten tension, preserving clarity and momentum 💥
 
-set -e  # Exit on error
+set -e  # End immediately on any error
 
-# Text colors for better feedback
+# 🌈 Text colors
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 RED='\033[0;31m'
 NC='\033[0m'  # No Color
 
-# Documentation directory
 DOCS_DIR="docs"
 BUILD_DIR="${DOCS_DIR}/_build/html"
 
-echo -e "${BLUE}============================================${NC}"
-echo -e "${BLUE}  Ollama Forge Documentation Builder       ${NC}"
-echo -e "${BLUE}============================================${NC}"
+echo -e "${BLUE}╔═══════════════════════════════════════════════╗${NC}"
+echo -e "${BLUE}║  Ollama Forge Documentation Builder ⚡🚀       ║${NC}"
+echo -e "${BLUE}╚═══════════════════════════════════════════════╝${NC}"
 
-# Function to handle errors
+# 🛡️ Error handling with clarity and precision
 error_handler() {
-    echo -e "${RED}Error occurred at line $1${NC}"
-    echo -e "${RED}Documentation build failed!${NC}"
+    echo -e "${RED}⚠️  Error at line $1.${NC}"
+    echo -e "${RED}Build process halted.${NC}"
     exit 1
 }
 
-# Set up error handling
 trap 'error_handler $LINENO' ERR
 
-# Navigate to script directory
+# Move to script directory 🌐
 cd "$(dirname "$0")" || {
-    echo -e "${RED}Failed to navigate to script directory${NC}"
+    echo -e "${RED}Unable to enter script directory!${NC}"
     exit 1
 }
 
-echo -e "${YELLOW}Working directory: $(pwd)${NC}"
+echo -e "${YELLOW}Current working directory: $(pwd)${NC}"
 
-# Create docs directory if it doesn't exist
+# Ensure existence of docs directory 📁
 if [ ! -d "$DOCS_DIR" ]; then
-    echo -e "${YELLOW}Creating docs directory...${NC}"
+    echo -e "${YELLOW}🌀 Creating docs directory...${NC}"
     mkdir -p "$DOCS_DIR"
-    echo -e "${GREEN}✓ Created docs directory${NC}"
+    echo -e "${GREEN}✓ docs directory ready${NC}"
 fi
 
-# Check requirements.txt exists
+# Check for docs/requirements.txt 📑
 if [ ! -f "${DOCS_DIR}/requirements.txt" ]; then
-    echo -e "${YELLOW}Creating docs/requirements.txt...${NC}"
+    echo -e "${YELLOW}🌀 Creating default requirements.txt...${NC}"
     cat > "${DOCS_DIR}/requirements.txt" << EOF
 sphinx>=4.0.0
 sphinx-rtd-theme>=1.0.0
@@ -55,53 +54,49 @@ sphinx-autobuild>=0.7.1
 sphinx-copybutton>=0.3.1
 sphinx-autodoc-typehints>=1.11.1
 EOF
-    echo -e "${GREEN}✓ Created docs/requirements.txt${NC}"
+    echo -e "${GREEN}✓ requirements.txt in place${NC}"
 fi
 
-# Clean previous builds
-echo -e "${BLUE}Cleaning previous builds...${NC}"
+# Clear past builds 💥
+echo -e "${BLUE}🧹 Removing previous builds...${NC}"
 if [ -d "$BUILD_DIR" ]; then
     rm -rf "$BUILD_DIR"
-    echo -e "${GREEN}✓ Removed previous build${NC}"
+    echo -e "${GREEN}✓ Old build removed${NC}"
 else
-    echo -e "${GREEN}✓ No previous build to clean${NC}"
+    echo -e "${GREEN}✓ No old build to remove${NC}"
 fi
 
-# Install documentation dependencies
-echo -e "${BLUE}Checking documentation dependencies...${NC}"
+# Check doc dependencies with minimal friction 🔍
+echo -e "${BLUE}🔎 Verifying documentation dependencies...${NC}"
 MISSING_DEPS=0
 for pkg in sphinx myst-parser sphinx-rtd-theme sphinx-autobuild; do
-    if ! pip show $pkg &> /dev/null; then
+    if ! pip show "$pkg" &> /dev/null; then
         MISSING_DEPS=1
         break
     fi
-done  # Fixed: Added missing 'done' to close the for loop
+done
 
 if [ $MISSING_DEPS -eq 1 ]; then
-    echo -e "${YELLOW}Installing documentation dependencies...${NC}"
+    echo -e "${YELLOW}🌀 Installing missing doc dependencies...${NC}"
     pip install -r "${DOCS_DIR}/requirements.txt"
-    echo -e "${GREEN}✓ Dependencies installed${NC}"
+    echo -e "${GREEN}✓ Dependencies ready${NC}"
 else
-    echo -e "${GREEN}✓ All dependencies already installed${NC}"
+    echo -e "${GREEN}✓ All dependencies present${NC}"
 fi
 
-# Check if conf.py exists
+# Minimal conf.py if missing 🔧
 if [ ! -f "${DOCS_DIR}/conf.py" ]; then
-    echo -e "${YELLOW}Warning: ${DOCS_DIR}/conf.py not found. Creating minimal configuration...${NC}"
-    
-    # Create a minimal conf.py
+    echo -e "${YELLOW}⚠️  No conf.py found—creating minimal configuration...${NC}"
     cat > "${DOCS_DIR}/conf.py" << EOF
-# Configuration file for the Sphinx documentation builder.
+# Sphinx configuration: Eidosian minimalism 🔄
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-# Project information
 project = 'Ollama Forge'
-copyright = '2025, Lloyd Handyside, Eidos'  # Updated: Fixed to use just 2025
-author = 'Lloyd Handyside, Eidos'
+copyright = '2025, Lloyd Handyside'
+author = 'Lloyd Handyside'
 
-# Extensions
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
@@ -109,17 +104,11 @@ extensions = [
     'myst_parser',
 ]
 
-# Add any paths that contain templates
 templates_path = ['_templates']
-
-# List of patterns to exclude
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
-# The theme to use for HTML and HTML Help pages.
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
-# Import package to get version
 try:
     from version import get_version_string
     version = get_version_string()
@@ -128,25 +117,24 @@ except ImportError:
     version = 'unknown'
     release = 'unknown'
 EOF
-    echo -e "${GREEN}✓ Created minimal conf.py${NC}"
+    echo -e "${GREEN}✓ Minimal conf.py created${NC}"
 fi
 
-# Check if index.rst exists
+# Minimal index if missing 🎯
 if [ ! -f "${DOCS_DIR}/index.rst" ] && [ ! -f "${DOCS_DIR}/index.md" ]; then
-    echo -e "${YELLOW}Warning: No index document found. Creating index.md...${NC}"
-    
-    # Create a minimal index.md
+    echo -e "${YELLOW}⚠️  No index document—creating index.md...${NC}"
     cat > "${DOCS_DIR}/index.md" << EOF
 # Ollama Forge Documentation
 
-Welcome to the Ollama Forge documentation!
+🎨 Welcome to Ollama Forge docs! 
+Flowing with Eidosian minimalism ⚡
 
-```{toctree}
+\`\`\`{toctree}
 :maxdepth: 2
 :caption: Contents:
 
 README
-```
+\`\`\`
 
 ## Indices and tables
 
@@ -154,54 +142,48 @@ README
 * {ref}\`modindex\`
 * {ref}\`search\`
 EOF
-    
-    # Create a symlink to README.md in docs directory
     if [ ! -f "${DOCS_DIR}/README.md" ] && [ -f "README.md" ]; then
         ln -sf "../README.md" "${DOCS_DIR}/README.md"
-        echo -e "${GREEN}✓ Linked README.md to docs directory${NC}"
+        echo -e "${GREEN}✓ Linked main README to docs${NC}"
     fi
-    
-    echo -e "${GREEN}✓ Created minimal index.md${NC}"
+    echo -e "${GREEN}✓ index.md is set${NC}"
 fi
 
-# Build the documentation
-echo -e "${BLUE}Building documentation...${NC}"
+# Build documentation 🚧
+echo -e "${BLUE}📚 Building documentation...${NC}"
 sphinx-build -b html "$DOCS_DIR" "$BUILD_DIR"
-echo -e "${GREEN}✓ Documentation built successfully!${NC}"
+echo -e "${GREEN}✓ Build completed${NC}"
 
-# Check if build succeeded
+# Check final artifact 🏁
 if [ -f "${BUILD_DIR}/index.html" ]; then
-    echo -e "${GREEN}============================================${NC}"
-    echo -e "${GREEN}  Documentation built successfully!         ${NC}"
-    echo -e "${GREEN}============================================${NC}"
-    echo -e "📁 Location: ${BUILD_DIR}/index.html"
-    
-    # Automatically open the documentation if on GUI system
+    echo -e "${GREEN}┌─────────────────────────────────────────┐${NC}"
+    echo -e "${GREEN}│    Documentation build succeeded!      │${NC}"
+    echo -e "${GREEN}└─────────────────────────────────────────┘${NC}"
+    echo -e "📑 Output location: ${BUILD_DIR}/index.html"
+
     if [ -n "$DISPLAY" ]; then
-        echo -e "${BLUE}Attempting to open documentation in default browser...${NC}"
-        if command -v xdg-open > /dev/null; then
+        echo -e "${BLUE}Attempting to open in default browser...${NC}"
+        if command -v xdg-open &> /dev/null; then
             xdg-open "${BUILD_DIR}/index.html"
-            echo -e "${GREEN}✓ Documentation opened in browser${NC}"
-        elif command -v open > /dev/null; then
+        elif command -v open &> /dev/null; then
             open "${BUILD_DIR}/index.html"
-            echo -e "${GREEN}✓ Documentation opened in browser${NC}"
         else
-            echo -e "${YELLOW}Could not open browser automatically.${NC}"
-            echo -e "Please manually open: file://$(realpath ${BUILD_DIR}/index.html)"
+            echo -e "${YELLOW}Cannot auto-open; open manually:${NC}"
+            echo "file://$(realpath "${BUILD_DIR}/index.html")"
         fi
     else
-        echo -e "${YELLOW}No display detected. To view documentation, open:${NC}"
-        echo -e "file://$(realpath ${BUILD_DIR}/index.html)"
+        echo -e "${YELLOW}No graphical display detected. Open manually:${NC}"
+        echo "file://$(realpath "${BUILD_DIR}/index.html")"
     fi
 else
-    echo -e "${RED}Documentation build seems to have failed. Check errors above.${NC}"
+    echo -e "${RED}Build process did not produce an index file. 🛑${NC}"
     exit 1
 fi
 
-# Suggest additional steps
-echo -e "\n${BLUE}Suggested next steps:${NC}"
-echo -e "1. Review the generated documentation"
-echo -e "2. Run 'python -m http.server --directory ${BUILD_DIR}' to serve docs locally"
-echo -e "3. Consider publishing docs to ReadTheDocs"
+# Next steps 🎬
+echo -e "\n${BLUE}⚙️ Next Steps:${NC}"
+echo "1. Verify generated docs thoroughly."
+echo "2. Optionally serve: python -m http.server --directory ${BUILD_DIR}"
+echo "3. Publish externally if desired (e.g., Read the Docs)."
 
 exit 0

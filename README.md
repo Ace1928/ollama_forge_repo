@@ -1,3 +1,5 @@
+<!-- 🌀 Illuminating README with Eidosian clarity and humor! 📖⚡ -->
+
 # Ollama Forge Python Client
 
 [![PyPI version](https://badge.fury.io/py/ollama-forge.svg)](https://badge.fury.io/py/ollama-forge)

@@ -1,10 +1,18 @@
+# 🌀 Pyproject with Eidosian harmony – universal and adaptive! 🌍
+
 [build-system]
 requires = ["setuptools>=61.0.0", "wheel>=0.37.0"]
 build-backend = "setuptools.build_meta"
 
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 📦 Project Core - Dynamic Version Management - Single Source of Truth
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# This version field is managed by version_update.py - changes synchronize
+# across config.py and version.py automatically.
+# To update: run `python tools/version_update.py X.Y.Z`
 [project]
 name = "ollama-forge"
-version = "0.1.9"
+version = "0.1.9"  # AUTO-MANAGED: Do not modify this line manually
 description = "Python client library and CLI for Ollama"
 readme = "README.md"
 authors = [

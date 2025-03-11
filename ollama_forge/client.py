@@ -174,11 +174,16 @@ class OllamaClient:
             request_headers.update(headers)
 
         backoff_factor = 0.5
+        
         for attempt in range(self.max_retries + 1):
             try:
                 async with httpx.AsyncClient(timeout=self.timeout) as client:
+                    # Use explicit typing for the HTTP response
+                    response: httpx.Response
+                    
+                    # Make request based on method
                     if method == "POST":
-                        response: httpx.Response = await client.post(  # Type-annotate
+                        response = await client.post(
                             url,
                             json=data,  # type: ignore [call-arg]
                             headers=request_headers,
@@ -203,16 +208,22 @@ class OllamaClient:
                         )
                     else:
                         raise OllamaAPIError(f"Unsupported method: {method}")
-
-                    status_code: int = response.status_code
-                    if 200 <= status_code < 300:
-                        return response
-                    elif status_code == 404:
-                        raise ModelNotFoundError(f"Model not found at {url}")
-                    elif 400 <= response.status_code < 500:
-                        raise OllamaAPIError(f"Client error {status_code}: {response.text}")
-                    else:
-                        raise ServerError(f"Server error {status_code}: {response.text}")
+                    
+                    # Use explicit casting for status code
+                    status_code = int(response.status_code)
+                    
+                    if status_code >= 400:
+                        # Explicitly type the error text
+                        error_text = str(response.text)
+                        
+                        if status_code == 404:
+                            raise ModelNotFoundError(f"Model not found at {url}")
+                        elif 400 <= status_code < 500:
+                            raise OllamaAPIError(f"Client error {status_code}: {error_text}")
+                        else:
+                            raise ServerError(f"Server error {status_code}: {error_text}")
+                    
+                    return response
 
             except (httpx.TimeoutException, httpx.RequestError) as e:
                 if attempt == self.max_retries:

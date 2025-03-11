@@ -118,7 +118,7 @@ If you encounter issues during installation:
 
 1. **Ollama not found**: Ensure Ollama is installed and in your PATH
 2. **Connection errors**: Check if the Ollama server is running (`ollama serve`)
-3. **Python version**: Verify you're using Python 3.6+
+3. **Python version**: Verify you're using Python 3.8+
 4. **Permission issues**: Try installing with `sudo` or use a virtual environment
 
 For more detailed troubleshooting, see the [Troubleshooting Guide](troubleshooting.md).

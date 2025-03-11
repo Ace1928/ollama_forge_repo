@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# 🌀 Publishing script fueled by Eidosian velocity and self-awareness! 🚀👁️
 """
 Script for publishing the package to PyPI.
 This script builds the package and uploads it to PyPI.
