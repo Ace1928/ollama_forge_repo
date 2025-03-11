@@ -5,11 +5,30 @@
 # ┃ 🔄 CORE DEPENDENCIES  ┃ 
 # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
 sphinx>=8.2.3             
-# Documentation generation engine - the foundation
+# Sphinx - the heart of documentation
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🌌 THEMES             ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
+furo
+# Sphinx theme - modern and responsive
 sphinx-rtd-theme>=3.0.2   
-# Read the Docs theme - elegant and familiar
+# Read the Docs theme - classic and reliable
+
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 📜 MARKDOWN SUPPORT   ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
 myst-parser>=4.0.1        
 # Markdown support - flow like a river between formats
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 📚 DOCUMENTATION      ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
+sphinxcontrib-plantuml>=0.2.0
+# PlantUML support - visualizing the unseen
+sphinxcontrib-mermaid>=0.1.0
+# Mermaid support - flowcharting the unseen
 sphinx-autoapi>=3.0.0
 # API documentation generation - recursive precision
 
