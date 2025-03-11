@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # System API
 
 This document details system-related endpoints in Ollama Forge v0.1.9 for checking server status, version information, and system operations.

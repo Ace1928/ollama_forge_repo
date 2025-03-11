@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Ollama Forge Conventions
 
 This document outlines the conventions used across the Ollama Forge v0.1.9, following Eidosian principles of precision, clarity, and structural integrity.

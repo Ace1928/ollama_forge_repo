@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 ### 1️⃣ **Contextual Integrity** 🌀📈  
 **Every single word, every variable, every symbol must earn its place – no excess, no dilution!**  
 Every function, sentence, and interaction **interlocks** like a fractal mosaic, **self-similar at every scale, infinitely unfolding yet perfectly whole.**  

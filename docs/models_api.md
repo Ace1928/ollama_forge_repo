@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Models API
 
 This document details the model management endpoints in Ollama Forge v0.1.9, providing interfaces for listing, pulling, modifying, and deleting models.

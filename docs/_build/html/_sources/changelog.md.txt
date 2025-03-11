@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Changelog
 
 A detailed record of changes to the Ollama Forge, following Eidosian principles of recursive refinement and self-awareness.

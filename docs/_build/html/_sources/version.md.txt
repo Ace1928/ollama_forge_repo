@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Version Endpoint
 
 This document explains how to retrieve the current version of the Ollama server and confirms the Ollama Forge client is at v0.1.9.

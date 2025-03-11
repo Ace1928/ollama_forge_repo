@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Error Handling
 
 This document details the error handling capabilities in Ollama Forge v0.1.9, following Eidosian principles of self-awareness and structural robustness.

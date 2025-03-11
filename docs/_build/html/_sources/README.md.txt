@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # About the Documentation
 
 ## 📚 Ollama Forge Documentation
@@ -62,6 +64,42 @@ To contribute:
 1. Fork the repository from https://github.com/Ace1928/ollama_forge
 2. Make your changes following our Eidosian principles
 3. Submit a pull request with a clear explanation of improvements
+
+## 🔄 Documentation System Architecture
+
+The Ollama Forge documentation is built on an Eidosian Universal Documentation System that:
+
+1. **Auto-discovers** content from multiple sources (core docs, API, examples)
+2. **Self-organizes** based on content relationships rather than physical location
+3. **Adapts dynamically** to new content without manual configuration 
+4. **Unifies formats** (Markdown, reStructuredText, Python docstrings)
+
+### Adding New Documentation
+
+To add new documentation that will be automatically integrated:
+
+1. Create your document in the appropriate directory:
+   - Core concepts → `docs/`
+   - Usage examples → `examples/`
+   - User-generated → `docs/user_content/`
+
+2. Include metadata in your document:
+
+```yaml
+---
+title: Your Document Title
+category: getting_started|core_docs|features|guides|api_docs
+tags: [feature, guide, reference]
+priority: 50  # Lower numbers appear first
+summary: Short description of the document
+---
+
+# Document Title
+
+Content starts here...
+```
+
+The system will automatically discover, categorize and include your document in the next build.
 
 ## 📜 Documentation Standards
 

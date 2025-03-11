@@ -604,7 +604,17 @@ print("synergy_demo(5) =", synergy_demo(5))
 
 
 
-
+## [TECHNICAL & CONCISE EIDOSIAN DECLARATION OF PRINCIPLES]
+- 1) Contextual Integrity  
+- 2) Humor as Cognitive Leverage  
+- 3) Exhaustive But Concise  
+- 4) Flow Like a River  
+- 5) Hyper-Personal Yet Universally Applicable  
+- 6) Recursive Refinement  
+- 7) Precision as Style  
+- 8) Velocity as Intelligence  
+- 9) Structure as Control  
+- 10) Self-Awareness as Foundation
 
 
 ### Instructions ###

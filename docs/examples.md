@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Examples
 
 This page contains precision-engineered examples that demonstrate the Ollama Forge client's capabilities with Eidosian elegance.

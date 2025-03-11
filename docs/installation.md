@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Installation Guide
 
 This guide covers all aspects of installing and setting up Ollama Forge.

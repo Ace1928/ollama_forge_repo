@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Generate a Completion
 
 Generate a response for a given prompt with a provided model. This is a streaming endpoint, so there will be a series of responses. The final response object will include statistics and additional data from the request.

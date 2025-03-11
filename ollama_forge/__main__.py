@@ -17,12 +17,13 @@ import argparse
 from typing import List, Optional, Dict, Callable
 
 # Import CLI components
-from .cli import main as cli_main
-from .cli.commands import (
+from ollama_forge.cli import main as cli_main
+from ollama_forge.cli.commands import (
     generate_command, 
     chat_command,
     embedding_command,
-    models_command
+    models_command,
+    health_command
 )
 
 def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
@@ -90,7 +91,7 @@ def command_router() -> Dict[str, Callable]:
         "chat": chat_command,
         "embed": embedding_command,
         "models": models_command,
-        "health": lambda args: print("✅ Ollama server health check - Ready for synergy!")
+        "health": health_command
     }
 
 def main() -> int:

@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Troubleshooting Guide
 
 This document provides structured solutions for common issues encountered when using Ollama Forge v0.1.9, organized by problem domain with Eidosian precision and recursion.

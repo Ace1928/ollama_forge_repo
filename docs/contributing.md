@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Contributing Guide
 
 Thank you for considering contributing to Ollama Forge!

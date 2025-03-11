@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Eidosian Integration
 
 This document explores how Ollama Forge v0.1.9 embodies the ten Eidosian principles, creating a development experience of unparalleled excellence.

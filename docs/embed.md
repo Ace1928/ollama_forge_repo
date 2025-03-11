@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Generate Embeddings
 
 Generate embeddings from a model. Embeddings are vector representations of text that can be used for semantic search, clustering, and other NLP tasks.

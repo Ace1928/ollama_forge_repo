@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 .. Ollama Forge documentation master file
 
 # Ollama Forge Documentation 🚀

@@ -663,10 +663,11 @@ class OllamaClient:
             None
             
         Example:
-            ```
-            with client.fallback_context("chat"):
-                response = client.chat(model, messages)
-            ```
+        
+        ```python
+        with client.fallback_context("chat"):
+            response = client.chat(model, messages)
+        ```
         """
         if not hasattr(self._thread_local, "fallback_depth"):
             self._thread_local.fallback_depth = 0

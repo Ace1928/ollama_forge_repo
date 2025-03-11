@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Quickstart Guide
 
 This guide will help you get started with Ollama Forge in minutes—following Eidosian principles of efficiency and elegance.

@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # Model Management
 
 This document details the model management capabilities in Ollama Forge v0.1.9, following Eidosian principles of structural control and recursive refinement.

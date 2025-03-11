@@ -1,3 +1,5 @@
+<!-- :orphan: -->
+
 # API Reference
 
 This document—a precision-engineered blueprint—details all classes and methods provided by the Ollama Forge client.
