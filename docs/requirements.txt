@@ -4,35 +4,47 @@
 # ┏━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🔄 CORE DEPENDENCIES  ┃ 
 # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
-sphinx             
+sphinx>=8.2.3             
 # Documentation generation engine - the foundation
-sphinx-rtd-theme   
+sphinx-rtd-theme>=3.0.2   
 # Read the Docs theme - elegant and familiar
-myst-parser        
+myst-parser>=4.0.1        
 # Markdown support - flow like a river between formats
 
 # ┏━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ ✨ ENHANCEMENTS       ┃ 
 # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
-sphinx-copybutton       
+sphinx-copybutton>=0.5.2       
 # One-click code copying - velocity as intelligence
-sphinx-autodoc-typehints  
+sphinx-autodoc-typehints>=3.1.0  
 # Type hints in documentation - precision as style
-sphinx-autobuild    
+sphinx-autobuild>=2024.10.3    
 # Live rebuilding - recursive refinement in action
-sphinx-design           
+sphinx-design>=0.6.1           
 # Advanced components - structure as control
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🚀 AUTOBUILD DEPS     ┃ 
+# ┗━━━━━━━━━━━━━━━━━━━━━━━┛
+uvicorn>=0.30.6
+# ASGI server needed by sphinx-autobuild
+starlette>=0.46.1
+# ASGI toolkit required by uvicorn
+watchfiles>=1.0.4
+# File watching for live reload
+websockets>=15.0.1
+# WebSockets for live reload
 
 # ┏━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🎯 SPECIFIC FORMATS   ┃ 
 # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
-sphinxcontrib-applehelp  
+sphinxcontrib-applehelp>=2.0.0  
 # Apple Help support - universal compatibility
-sphinxcontrib-devhelp    
+sphinxcontrib-devhelp>=2.0.0    
 # DevHelp support - developer friendliness
-sphinxcontrib-htmlhelp   
+sphinxcontrib-htmlhelp>=2.1.0   
 # HTML help - classic accessibility
-sphinxcontrib-qthelp     
+sphinxcontrib-qthelp>=2.0.0     
 # Qt Help - cross-platform integration
-sphinxcontrib-serializinghtml  
+sphinxcontrib-serializinghtml>=2.0.0  
 # Serialized HTML - deployment flexibility
