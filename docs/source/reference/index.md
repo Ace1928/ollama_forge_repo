@@ -79,6 +79,38 @@ print(response["response"])
 ## Documentation Contents
 
 ```{toctree}
+   quickstart
+   troubleshooting
+   generate
+   rtd_tutorial
+   advanced_usage
+   autoapi/ollama_forge/client/index
+   installation
+   docs/api/ollama_forge
+   system_api
+   embed
+   docs/api/ollama_forge.cli
+   api_reference
+   contributing
+   autoapi/ollama_forge/config/index
+   chat
+   examples
+   conventions
+   changelog
+   docs/api/modules
+   autoapi/ollama_forge/index
+   version
+   autoapi/ollama_forge/exceptions/index
+   README
+   autoapi/ollama_forge/cli/index
+   autoapi/ollama_forge/__main__/index
+   models_api
+   model_management
+   error_handling
+   eidosian_principles
+   eidosian_integration
+   autoapi/ollama_forge/cli/commands/index
+   index
 :maxdepth: 2
 :caption: 📚 Getting Started
 

@@ -652,22 +652,22 @@ class OllamaClient:
         return generate_updates()
 
     @contextmanager
-    def fallback_context(self, operation: str):
+    def fallback_context(self, prompt: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
         """
         Context manager for automatic model fallback.
         
         Args:
-            operation: Operation type ("chat", "generate", "embedding")
+            prompt: The user's query or message
+            system_prompt: Optional system prompt to use
             
-        Yields:
-            None
+        Returns:
+            Context dictionary with parameters
             
         Example:
-        
-        ```python
-        with client.fallback_context("chat"):
-            response = client.chat(model, messages)
-        ```
+            ```python
+            with client.fallback_context("chat"):
+                response = client.chat(model, messages)
+            ```
         """
         if not hasattr(self._thread_local, "fallback_depth"):
             self._thread_local.fallback_depth = 0

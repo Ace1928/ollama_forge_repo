@@ -1,4 +1,4 @@
-# filepath: /home/lloyd/Development/eidos/ollama_forge_repo/docs/conf.py
+#!/usr/bin/env python3
 # ╔═════════════════════════════════════════════════════╗
 # ║  S P H I N X   C O N F I G  –  E I D O S I A N   M O D E  ║
 # ╚═════════════════════════════════════════════════════╝
@@ -6,12 +6,14 @@
 
 import os
 import sys
-import subprocess
+import json
+from datetime import datetime
 from pathlib import Path
 import logging
 import importlib.util
 from typing import Dict, List, Set, Tuple, Optional, Any, Union
 import re
+import shutil
 
 # 🚀 Core Project Identity - Contextual Foundation
 project = "Ollama Forge"
@@ -28,306 +30,340 @@ logging.basicConfig(
 logger = logging.getLogger("eidosian_docs")  # 🧠 Centralized logger for all operations
 
 # 🏛️ Repository Architecture - Structure as Control
-try:
-    REPO_ROOT = Path(__file__).resolve().parent.parent
-    logger.info(f"🏛️ Repository root detected at: {REPO_ROOT}")
-except Exception as e:
-    logger.warning(f"⚠️ Could not detect repository root: {e}")
-    REPO_ROOT = Path(os.path.dirname(os.path.abspath(__file__))).parent
-
+REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = REPO_ROOT / "docs"  # 📁 Documentation home
 BUILD_DIR = DOCS_DIR / "_build"  # 🏗️ Where artifacts materialize
+SOURCE_DIR = DOCS_DIR / "source"  # 📦 Source documentation
+AUTO_DIR = DOCS_DIR / "auto"  # 🤖 Auto-generated documentation
 sys.path.insert(0, os.path.abspath(str(REPO_ROOT)))  # 🔍 Make imports work flawlessly
 
-# 🗺️ Documentation Cartography - The Map of Knowledge
-DOC_MAPPING = {
-    "ollama_forge": {
-        "path": REPO_ROOT / "ollama_forge",
-        "patterns": ["*.py"],
-        "priority": 100,  # Highest priority - core API always comes first
-        "section": "api_docs",
-        "title": "API Reference",
-        "description": "Auto-generated API documentation from source code"
-    },
-    "examples": {
-        "path": REPO_ROOT / "examples",
-        "patterns": ["*.py"],
-        "priority": 90,
-        "section": "examples",
-        "title": "Examples",
-        "description": "Example code showing usage patterns"
-    },
-    "helpers": {
-        "path": REPO_ROOT / "helpers",
-        "patterns": ["*.py"],
-        "priority": 85,
-        "section": "features",
-        "title": "Helper Utilities",
-        "description": "Support utilities and helper functions"
-    },
-    "tests": {
-        "path": REPO_ROOT / "tests",
-        "patterns": ["*.py"],
-        "include_dir": False,
-        "priority": 80,
-        "section": "guides",
-        "title": "Testing Guide",
-        "description": "Test suite and quality assurance"
-    },
-    "docs_md": {
-        "path": DOCS_DIR,
-        "patterns": ["*.md"],
-        "exclude_patterns": ["README.md", "_templates/**", "_build/**", "_static/**"],
-        "priority": 70,
-        "section": "core_docs",
-        "title": "Core Documentation",
-        "description": "Core narrative documentation"
-    },
-    "docs_rst": {
-        "path": DOCS_DIR,
-        "patterns": ["*.rst"],
-        "exclude_patterns": ["_templates/**", "_build/**", "_static/**"],
-        "priority": 65,
-        "section": "core_docs",
-        "title": "Core Documentation",
-        "description": "Core narrative documentation (RST)"
-    },
-    "user_content": {
-        "path": DOCS_DIR / "user_content",
-        "patterns": ["*.md", "*.rst"],
-        "priority": 60,
-        "section": "user_docs",
-        "title": "Community Contributions",
-        "description": "User-generated content and contributions",
-        "optional": True
-    }
-}
+# Create required directories if they don't exist
+for directory in [
+    DOCS_DIR / "_static",
+    DOCS_DIR / "_templates", 
+    AUTO_DIR / "api",
+    AUTO_DIR / "extracted", 
+    AUTO_DIR / "introspected"
+]:
+    directory.mkdir(parents=True, exist_ok=True)
 
+# Create .gitkeep file for _static if it doesn't exist
+gitkeep_file = DOCS_DIR / "_static" / ".gitkeep"
+if not gitkeep_file.exists():
+    with open(gitkeep_file, "w") as f:
+        pass
+
+# 🗺️ Documentation Cartography - The Map of Knowledge
 DOCUMENTATION_CATEGORIES = {
     "getting_started": {
         "caption": "📚 Getting Started",
         "description": "Introduction and initial setup",
         "priority": 100,
+        "path": SOURCE_DIR / "getting_started",
         "items": []
     },
-    "core_docs": {
-        "caption": "🛠️ Core Documentation",
-        "description": "Main documentation and reference",
+    "concepts": {
+        "caption": "🧩 Core Concepts",
+        "description": "Fundamental concepts and principles",
         "priority": 90,
-        "items": []
-    },
-    "features": {
-        "caption": "🔄 Features & Capabilities",
-        "description": "Feature-specific documentation",
-        "priority": 80,
-        "items": []
-    },
-    "guides": {
-        "caption": "🧠 Guides & References",
-        "description": "Guides, tutorials and references",
-        "priority": 70,
-        "items": []
-    },
-    "api_docs": {
-        "caption": "🧩 API Endpoints",
-        "description": "API documentation and endpoints",
-        "priority": 60,
+        "path": SOURCE_DIR / "concepts",
         "items": []
     },
     "examples": {
         "caption": "📋 Examples",
         "description": "Example code and usage patterns",
-        "priority": 50,
+        "priority": 80,
+        "path": SOURCE_DIR / "examples",
         "items": []
     },
-    "user_docs": {
-        "caption": "👥 Community Contributions",
-        "description": "User-contributed documentation",
-        "priority": 40,
+    "guides": {
+        "caption": "🧠 Guides & Tutorials",
+        "description": "Guides, tutorials and how-tos",
+        "priority": 70,
+        "path": SOURCE_DIR / "guides",
         "items": []
-    }
+    },
+    "reference": {
+        "caption": "🔍 API Reference",
+        "description": "API documentation and references",
+        "priority": 60,
+        "path": SOURCE_DIR / "reference",
+        "items": []
+    },
 }
 
-def discover_repository_documentation():
-    known_paths = {str(config["path"]) for config in DOC_MAPPING.values()}
-    for potential_docs_dir in REPO_ROOT.glob("**/docs"):
-        if (str(potential_docs_dir) in known_paths or
-            "_build" in str(potential_docs_dir) or
-            ".git" in str(potential_docs_dir)):
-            continue
-        has_docs = False
-        for ext in [".md", ".rst", ".txt"]:
-            if list(potential_docs_dir.glob(f"*{ext}")):
-                has_docs = True
-                break
-        if has_docs:
-            key = f"auto_{potential_docs_dir.relative_to(REPO_ROOT).as_posix().replace('/', '_')}"
-            parent = potential_docs_dir.parent.name
-            title = f"{parent.replace('_', ' ').title()} Documentation"
-            logger.info(f"🔍 Discovered documentation directory: {potential_docs_dir}")
-            DOC_MAPPING[key] = {
-                "path": potential_docs_dir,
-                "patterns": ["*.md", "*.rst", "*.txt"],
-                "priority": 50,
-                "section": "guides",
-                "title": title,
-                "description": f"Auto-discovered documentation from {parent}",
-                "optional": True
-            }
+# Function to convert RST to Markdown if needed
+def convert_rst_to_md():
+    """Convert any RST files to Markdown format for consistency."""
+    import subprocess
+    try:
+        import pypandoc
+        logger.info("🔄 Found pypandoc for RST to MD conversion")
+        for rst_file in SOURCE_DIR.glob("**/*.rst"):
+            md_file = rst_file.with_suffix(".md")
+            try:
+                pypandoc.convert_file(str(rst_file), "markdown", outputfile=str(md_file))
+                logger.info(f"✅ Converted {rst_file.name} to Markdown")
+                rst_file.unlink()  # Remove the original RST file
+            except Exception as e:
+                logger.warning(f"⚠️ Failed to convert {rst_file}: {e}")
+    except ImportError:
+        try:
+            # Fallback to pandoc command line if available
+            for rst_file in SOURCE_DIR.glob("**/*.rst"):
+                md_file = rst_file.with_suffix(".md")
+                subprocess.run(["pandoc", str(rst_file), "-o", str(md_file)])
+                logger.info(f"✅ Converted {rst_file.name} to Markdown using pandoc")
+                rst_file.unlink()  # Remove the original RST file
+        except (subprocess.SubprocessError, FileNotFoundError):
+            logger.warning("⚠️ Could not convert RST files. Install pypandoc or pandoc.")
 
+# Call the conversion function
 try:
-    discover_repository_documentation()
+    convert_rst_to_md()
 except Exception as e:
-    logger.warning(f"⚠️ Repository-wide documentation discovery failed: {e}")
+    logger.warning(f"⚠️ RST conversion error: {e}")
 
+# Generate navigation structure from the documentation directories
 def generate_navigation_structure():
-    navigation = {}
-    index_patterns = ["index.md", "index.rst", "README.md", "readme.md"]
-    for source_key, source_config in DOC_MAPPING.items():
-        path = source_config["path"]
-        section = source_config["section"]
-        if not path.exists() and source_config.get("optional", False):
-            continue
+    """
+    Generate a navigation structure for the sidebar based on the actual files
+    in the documentation directories.
+    """
+    nav_structure = {}
+    
+    for category, config in DOCUMENTATION_CATEGORIES.items():
+        path = config["path"]
         if not path.exists():
-            logger.warning(f"⚠️ Documentation path doesn't exist: {path}")
-            continue
-        index_file = None
-        for pattern in index_patterns:
-            potential_index = path / pattern
-            if potential_index.exists():
-                index_file = potential_index
-                break
-        if index_file:
-            title = source_config["title"]
-            url = str(index_file.relative_to(DOCS_DIR)).replace(".md", ".html").replace(".rst", ".html")
-            if section not in navigation:
-                navigation[section] = []
-            navigation[section].append({
+            path.mkdir(parents=True, exist_ok=True)
+            logger.info(f"📁 Created directory for {category}: {path}")
+        
+        items = []
+        
+        # Find all Markdown files in this category directory
+        for md_file in sorted(path.glob("**/*.md")):
+            # Extract title from the file
+            title = md_file.stem.replace("_", " ").title()
+            if md_file.name.lower() in ["readme.md", "index.md"]:
+                title = config["caption"].replace("📚 ", "").replace("🧩 ", "").replace("📋 ", "").replace("🧠 ", "").replace("🔍 ", "")
+                priority = 0  # Always put index/readme at the top
+            else:
+                priority = 10
+            
+            # Get the URL relative to the docs directory
+            url = str(md_file.relative_to(DOCS_DIR)).replace("\\", "/")
+            
+            items.append({
                 "title": title,
                 "url": url,
-                "priority": source_config.get("priority", 50)
+                "priority": priority
             })
-    for section in navigation:
-        navigation[section] = sorted(navigation[section], key=lambda x: x.get("priority", 50))
-    nav_structure = {}
-    for category, config in DOCUMENTATION_CATEGORIES.items():
-        if category in navigation:
-            nav_structure[category] = {
-                "caption": config["caption"],
-                "description": config.get("description", ""),
-                "items": navigation.get(category, [])
-            }
+        
+        # Sort items by priority
+        items.sort(key=lambda x: x["priority"])
+        
+        nav_structure[category] = {
+            "caption": config["caption"],
+            "description": config.get("description", ""),
+            "items": items
+        }
+    
     return nav_structure
 
-try:
-    spec = importlib.util.spec_from_file_location(
-        "source_discovery", os.path.join(os.path.dirname(__file__), "source_discovery.py")
-    )
-    source_discovery = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(source_discovery)
-    discovery = source_discovery.DocumentationDiscovery(REPO_ROOT)
-    logger.info("📚 Advanced document discovery engine loaded")
-    try:
-        documents = discovery.discover_all_documents()
-        toc = discovery.generate_toc_structure(documents)
-        toc_trees = discovery.generate_sphinx_toctree(toc)
-        index_path = DOCS_DIR / "index.md"
-        if "--update-index" in sys.argv and index_path.exists():
-            logger.info("🔄 Updating index.md with generated TOC trees")
-            discovery.write_index_with_toctrees(toc_trees)
-    except Exception as e:
-        logger.warning(f"⚠️ Error during document discovery: {e}")
-except ImportError:
-    logger.warning("⚠️ source_discovery.py not found, advanced features disabled")
-    discovery = None
-
+# Sphinx Extensions
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.viewcode",
+    "sphinx.ext.viewcode", 
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.githubpages",
     "sphinx_autodoc_typehints",
     "sphinx_copybutton",
-    "myst_parser",
+    "myst_parser",  # For Markdown support
     "sphinx.ext.intersphinx",
-    "autoapi.extension",
 ]
 
-# AutoAPI configuration - this helps prevent duplicate entries
-autoapi_type = 'python'
-autoapi_dirs = ['../ollama_forge']
-autoapi_options = [
-    'members',
-    'undoc-members',
-    'show-inheritance',
-    'show-module-summary',
-    'imported-members',
-]
-autoapi_add_toctree_entry = True
-autoapi_keep_files = True
-autoapi_template_dir = '_templates/autoapi'
-autoapi_python_class_content = 'both'
-
+# Try to import autoapi extension
 try:
     import autoapi
-    logger.info(f"🔄 Using autoapi version: {autoapi.__version__}")
+    extensions.append("autoapi.extension")
     autoapi_type = "python"
-    autoapi_dirs = [str(DOC_MAPPING["ollama_forge"]["path"])]
-    autoapi_ignore = ["__init__.py", "**/__pycache__/**"]
-    autoapi_add_toctree_entry = False
+    autoapi_dirs = [str(REPO_ROOT / "ollama_forge")]
+    autoapi_output_dir = str(AUTO_DIR / "api")
+    autoapi_template_dir = str(DOCS_DIR / "_templates" / "autoapi") if (DOCS_DIR / "_templates" / "autoapi").exists() else None
     autoapi_options = [
-        "members",
-        "undoc-members",
-        "private-members",
-        "show-inheritance",
-        "show-module-summary",
-        "special-members",
-        "imported-members",
-        "noindex",
+        'members',
+        'undoc-members',
+        'private-members',
+        'show-inheritance',
+        'show-module-summary',
+        'special-members',
+        'imported-members',
     ]
-    _api_objects = set()
-
-    def track_api_object(app, objtype, name, obj, options, lines):
-        if hasattr(app.env, "_api_objects"):
-            app.env._api_objects.add(name)
-        else:
-            app.env._api_objects = {name}
+    autoapi_add_toctree_entry = True
+    autoapi_keep_files = True
+    autoapi_python_class_content = 'both'
+    logger.info(f"🔄 Using autoapi version: {autoapi.__version__}")
 except ImportError:
-    logger.warning("⚠️ sphinx-autoapi not installed, API documentation may be limited")
+    logger.warning("⚠️ sphinx-autoapi not installed, API documentation will be limited")
 
+# Process before we load the navigation to ensure all files are discovered
+nav_structure = generate_navigation_structure()
+
+# Intersphinx configuration for cross-references
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
+}
+
+# Markdown configuration
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
+myst_heading_anchors = 4
+
+# HTML Theme Configuration
+html_theme = "furo"
+html_static_path = ["_static"]
+html_css_files = ["custom.css"]
+html_js_files = ["eidosian-enhancer.js"]
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".md": "markdown",
+    ".txt": "markdown",
+}
+
+# Theme options
+html_theme_options = {
+    "sidebar_hide_name": False,
+    "light_css_variables": {
+        "color-brand-primary": "#5D44F3",
+        "color-brand-content": "#5D44F3",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#9285F7",
+        "color-brand-content": "#9285F7",
+    },
+    "navigation_with_keys": True,
+}
+
+# Add navigation to context
+html_context = {
+    "theme_sidebars": nav_structure,
+    "project_info": {
+        "name": project,
+        "version": version,
+        "release": release,
+    }
+}
+
+# Custom sidebar if available
+if (DOCS_DIR / "_templates" / "custom_sidebar.html").exists():
+    html_sidebars = {
+        "**": ["custom_sidebar.html", "sidebar/search.html"]
+    }
+
+# Ensure custom CSS file exists
+custom_css_path = DOCS_DIR / "_static" / "custom.css"
+if not custom_css_path.exists():
+    with open(custom_css_path, "w") as f:
+        f.write("""/* Eidosian Custom Styles */
+.eidosian-highlight {
+    background-color: rgba(93, 68, 243, 0.1);
+    border-left: 3px solid #5D44F3;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+}
+div.highlight pre {
+    border-radius: 0.3em;
+    padding: 1em;
+}
+table.docutils {
+    width: 100%;
+    border-collapse: collapse;
+}
+table.docutils th, table.docutils td {
+    padding: 0.5em;
+    border: 1px solid #e1e4e5;
+}
+table.docutils th {
+    background-color: #f3f4f7;
+}
+.principle {
+    margin: 1.5em 0;
+    padding: 1em;
+    border-left: 3px solid #5D44F3;
+    background-color: rgba(93, 68, 243, 0.05);
+}
+.principle-title {
+    font-weight: bold;
+    color: #5D44F3;
+    margin-bottom: 0.5em;
+}
+""")
+    logger.info("📝 Created custom CSS file")
+
+# Ensure JS enhancer exists
+js_enhancer_path = DOCS_DIR / "_static" / "eidosian-enhancer.js"
+if not js_enhancer_path.exists():
+    with open(js_enhancer_path, "w") as f:
+        f.write("""/* Eidosian JavaScript Enhancer */
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🌀 Eidosian enhancer activated');
+    
+    // Add class to code blocks for styling
+    document.querySelectorAll('div.highlight').forEach(function(element) {
+        element.classList.add('eidosian-code');
+    });
+    
+    // Create principle blocks
+    document.querySelectorAll('h3').forEach(function(heading) {
+        const text = heading.textContent.trim();
+        if (text.includes(':')) {
+            const [principle, description] = text.split(':');
+            if (principle && description) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'principle';
+                
+                const title = document.createElement('div');
+                title.className = 'principle-title';
+                title.textContent = principle.trim();
+                
+                const content = document.createElement('div');
+                content.textContent = description.trim();
+                
+                wrapper.appendChild(title);
+                wrapper.appendChild(content);
+                
+                heading.parentNode.replaceChild(wrapper, heading);
+            }
+        }
+    });
+});
+""")
+    logger.info("📝 Created JavaScript enhancer")
+
+# Autodoc configuration
 autodoc_default_options = {
     'members': True,
     'member-order': 'bysource',
     'special-members': '__init__',
     'undoc-members': True,
     'exclude-members': '__weakref__',
-    'noindex': True,  # Add this to prevent duplicating objects
 }
 
-autosectionlabel_prefix_document = True
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = False
-napoleon_include_special_with_doc = True
-napoleon_use_rtype = False
-napoleon_type_aliases = {}
-
-templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "**/__pycache__/**"]
-
-html_theme = "furo"
-html_static_path = ["_static"]
-source_suffix = {
-    ".rst": "restructuredtext",
-    ".md": "markdown",
-    ".txt": "markdown",
-}
-todo_include_todos = True
-copybutton_prompt_text = ">>> "
-
+# Configuration to avoid warning spam
 nitpicky = True
 nitpick_ignore = [
     ("py:class", "ConnectionError"),
@@ -363,57 +399,27 @@ suppress_warnings = [
     "ref.class",
 ]
 
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3", None),
-    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
-}
+# Exclude patterns for docs processing
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "**/__pycache__/**"]
+templates_path = ["_templates"]
+todo_include_todos = True
+copybutton_prompt_text = ">>> "
 
-nav_structure = generate_navigation_structure()
+# Document processing functions
+def process_rst_to_md(app, docname, source):
+    """Convert RST syntax to Markdown in source."""
+    if docname.endswith(".rst"):
+        source[0] = convert_rst_content_to_md(source[0])
 
-default_navigation = {
-    "getting_started": [
-        {"title": "Installation", "url": "installation.html", "priority": 10},
-        {"title": "Quickstart", "url": "quickstart.html", "priority": 20},
-        {"title": "Introduction", "url": "index.html", "priority": 5},
-    ],
-    "core_docs": [
-        {"title": "API Reference", "url": "api_reference.html", "priority": 10},
-        {"title": "Examples", "url": "examples.html", "priority": 20},
-        {"title": "Advanced Usage", "url": "advanced_usage.html", "priority": 30},
-    ],
-    "features": [
-        {"title": "Chat Completion", "url": "chat.html", "priority": 10},
-        {"title": "Text Generation", "url": "generate.html", "priority": 20},
-        {"title": "Embeddings", "url": "embed.html", "priority": 30},
-        {"title": "Model Management", "url": "model_management.html", "priority": 40},
-        {"title": "Error Handling", "url": "error_handling.html", "priority": 50},
-    ],
-    "guides": [
-        {"title": "Conventions", "url": "conventions.html", "priority": 10},
-        {"title": "Troubleshooting", "url": "troubleshooting.html", "priority": 20},
-        {"title": "Eidosian Integration", "url": "eidosian_integration.html", "priority": 30},
-        {"title": "Contributing", "url": "contributing.html", "priority": 40},
-        {"title": "Changelog", "url": "changelog.html", "priority": 50},
-    ],
-    "api_docs": [
-        {"title": "Version", "url": "version.html", "priority": 10},
-        {"title": "Generate", "url": "generate.html", "priority": 20},
-        {"title": "Chat", "url": "chat.html", "priority": 30},
-        {"title": "Embed", "url": "embed.html", "priority": 40},
-        {"title": "Models API", "url": "models_api.html", "priority": 50},
-        {"title": "System API", "url": "system_api.html", "priority": 60},
-    ],
-}
-
-for section, items in default_navigation.items():
-    if section in nav_structure:
-        if not nav_structure[section]["items"]:
-            nav_structure[section]["items"] = items
-    else:
-        if section in DOCUMENTATION_CATEGORIES:
-            nav_structure[section] = {
-                "caption": DOCUMENTATION_CATEGORIES[section]["caption"],
-                "description": DOCUMENTATION_CATEGORIES[section].get("description", ""),
+def convert_rst_content_to_md(content):
+    """Simple RST to MD conversion for common patterns."""
+    # Convert RST directives to Markdown equivalents
+    patterns = [
+        (r"\.\. code-block:: (\w+)\n\n([\s\S]+?)(?=\n\n|\Z)", r"```\1\n\2\n```"),
+        (r"\.\. note::\n\n([\s\S]+?)(?=\n\n|\Z)", r"> **Note**\n> \1"),
+        (r"\.\. warning::\n\n([\s\S]+?)(?=\n\n|\Z)", r"> **Warning**\n> \1"),
+        (r"\.\. toctree::\n\n([\s\S]+?)(?=\n\n|\Z)", r"<!-- toctree -->\n\1"),
+        (r":ref:`([^<`]+)\s+<([^>]+)>`", r"[\1](#\2)"),
                 "items": items
             }
 
