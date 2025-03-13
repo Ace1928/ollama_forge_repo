@@ -28,8 +28,6 @@ python:
   install:
     - method: pip
       path: .  # Install the package itself first
-      extra_requirements:
-        - docs  # Install documentation extras from pyproject.toml
     - requirements: docs/requirements.txt
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
