@@ -1,0 +1,1087 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>ollama_forge.config - Ollama Forge 0.1.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=ae1d98f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #5D44F3;
+  --color-brand-content: #5D44F3;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #9285F7;
+  --color-brand-content: #9285F7;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #9285F7;
+  --color-brand-content: #9285F7;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Ollama Forge 0.1.9 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky">
+
+
+<div class="sidebar-logo">
+    <a href="../../../index.html">
+        
+        <p class="sidebar-logo-text">Ollama Forge 0.1.9</p>
+    </a>
+</div>
+<div class="sidebar-tree">
+    
+    
+    
+    <p class="caption" role="heading">
+        <span class="caption-text">🛠️ Core Documentation</span>
+    </p>
+    <ul>
+        
+        <li class="toctree-l1">
+    <a class="reference internal" href="../../../index.html.html">Core Documentation</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../index.html.html">Core Documentation</a>
+</li>
+    </ul>
+    
+    <p class="caption" role="heading">
+        <span class="caption-text">📚 Getting Started</span>
+    </p>
+    <ul>
+        
+        <li class="toctree-l1">
+    <a class="reference internal" href="../../../installation.html.html">Installation</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../quickstart.html.html">Quickstart</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../index.html.html">Introduction</a>
+</li>
+    </ul>
+    
+    <p class="caption" role="heading">
+        <span class="caption-text">🔄 Features & Capabilities</span>
+    </p>
+    <ul>
+        
+        <li class="toctree-l1">
+    <a class="reference internal" href="../../../chat.html.html">Chat Completion</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../generate.html.html">Text Generation</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../embed.html.html">Embeddings</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../model_management.html.html">Model Management</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../error_handling.html.html">Error Handling</a>
+</li>
+    </ul>
+    
+    <p class="caption" role="heading">
+        <span class="caption-text">🧠 Guides & References</span>
+    </p>
+    <ul>
+        
+        <li class="toctree-l1">
+    <a class="reference internal" href="../../../conventions.html.html">Conventions</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../troubleshooting.html.html">Troubleshooting</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../eidosian_integration.html.html">Eidosian Integration</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../contributing.html.html">Contributing</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../changelog.html.html">Changelog</a>
+</li>
+    </ul>
+    
+    <p class="caption" role="heading">
+        <span class="caption-text">🧩 API Endpoints</span>
+    </p>
+    <ul>
+        
+        <li class="toctree-l1">
+    <a class="reference internal" href="../../../version.html.html">Version</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../generate.html.html">Generate</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../chat.html.html">Chat</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../embed.html.html">Embed</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../models_api.html.html">Models API</a>
+</li><li class="toctree-l1">
+    <a class="reference internal" href="../../../system_api.html.html">System API</a>
+</li>
+    </ul>
+    
+    
+</div><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/autoapi/ollama_forge/config/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-ollama_forge.config">
+<span id="ollama-forge-config"></span><h1>ollama_forge.config<a class="headerlink" href="#module-ollama_forge.config" title="Link to this heading">¶</a></h1>
+<p>Configuration module for Ollama Forge.</p>
+<p>This module serves as the central source of truth for all configuration
+parameters and versioning information used throughout the package.
+It embodies the Eidosian principles of Structure as Control and Contextual Integrity.</p>
+<p>Every constant, function, and docstring here stands on its own yet interlocks
+seamlessly with the larger system—a fractal reflection of purpose and clarity.</p>
+<p>Attributes</p>
+<hr class="docutils" />
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.T" title="ollama_forge.config.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.F" title="ollama_forge.config.F"><code class="xref py py-obj docutils literal notranslate"><span class="pre">F</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.SYSTEM" title="ollama_forge.config.SYSTEM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SYSTEM</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.IS_WINDOWS" title="ollama_forge.config.IS_WINDOWS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_WINDOWS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.IS_MACOS" title="ollama_forge.config.IS_MACOS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_MACOS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.IS_LINUX" title="ollama_forge.config.IS_LINUX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_LINUX</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.IS_ARM64" title="ollama_forge.config.IS_ARM64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_ARM64</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.IS_X86_64" title="ollama_forge.config.IS_X86_64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_X86_64</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.CPU_COUNT" title="ollama_forge.config.CPU_COUNT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CPU_COUNT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.MEMORY_MB" title="ollama_forge.config.MEMORY_MB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MEMORY_MB</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.IS_CONTAINER" title="ollama_forge.config.IS_CONTAINER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_CONTAINER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.IS_CI_ENV" title="ollama_forge.config.IS_CI_ENV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IS_CI_ENV</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.PACKAGE_NAME" title="ollama_forge.config.PACKAGE_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PACKAGE_NAME</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.PACKAGE_NAME_NORMALIZED" title="ollama_forge.config.PACKAGE_NAME_NORMALIZED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PACKAGE_NAME_NORMALIZED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.VERSION_MAJOR" title="ollama_forge.config.VERSION_MAJOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VERSION_MAJOR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.VERSION_MINOR" title="ollama_forge.config.VERSION_MINOR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VERSION_MINOR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.VERSION_PATCH" title="ollama_forge.config.VERSION_PATCH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VERSION_PATCH</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.VERSION" title="ollama_forge.config.VERSION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VERSION</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.VERSION_RELEASE_DATE" title="ollama_forge.config.VERSION_RELEASE_DATE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VERSION_RELEASE_DATE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.BUILD_TIMESTAMP" title="ollama_forge.config.BUILD_TIMESTAMP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BUILD_TIMESTAMP</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.PACKAGE_BIRTHDAY" title="ollama_forge.config.PACKAGE_BIRTHDAY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PACKAGE_BIRTHDAY</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.DEFAULT_OLLAMA_API_URL" title="ollama_forge.config.DEFAULT_OLLAMA_API_URL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_OLLAMA_API_URL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.DEFAULT_TIMEOUT" title="ollama_forge.config.DEFAULT_TIMEOUT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_TIMEOUT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.DEFAULT_MAX_RETRIES" title="ollama_forge.config.DEFAULT_MAX_RETRIES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_MAX_RETRIES</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.DEFAULT_CHAT_MODEL" title="ollama_forge.config.DEFAULT_CHAT_MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_CHAT_MODEL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.BACKUP_CHAT_MODEL" title="ollama_forge.config.BACKUP_CHAT_MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BACKUP_CHAT_MODEL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.DEFAULT_EMBEDDING_MODEL" title="ollama_forge.config.DEFAULT_EMBEDDING_MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_EMBEDDING_MODEL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.BACKUP_EMBEDDING_MODEL" title="ollama_forge.config.BACKUP_EMBEDDING_MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BACKUP_EMBEDDING_MODEL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.DEFAULT_MIN_CONTEXT" title="ollama_forge.config.DEFAULT_MIN_CONTEXT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_MIN_CONTEXT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.RECOMMENDED_CONTEXT" title="ollama_forge.config.RECOMMENDED_CONTEXT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RECOMMENDED_CONTEXT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.AUTHORS" title="ollama_forge.config.AUTHORS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AUTHORS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.DEBUG_MODE" title="ollama_forge.config.DEBUG_MODE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEBUG_MODE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.VERBOSE_MODE" title="ollama_forge.config.VERBOSE_MODE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VERBOSE_MODE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.LOG_LEVEL" title="ollama_forge.config.LOG_LEVEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.DISABLE_PROGRESS_BARS" title="ollama_forge.config.DISABLE_PROGRESS_BARS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DISABLE_PROGRESS_BARS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.user_dirs" title="ollama_forge.config.user_dirs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_dirs</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.USER_CONFIG_DIR" title="ollama_forge.config.USER_CONFIG_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USER_CONFIG_DIR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.USER_CACHE_DIR" title="ollama_forge.config.USER_CACHE_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USER_CACHE_DIR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.USER_DATA_DIR" title="ollama_forge.config.USER_DATA_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USER_DATA_DIR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ollama_forge.config.API_ENDPOINTS" title="ollama_forge.config.API_ENDPOINTS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">API_ENDPOINTS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ollama_forge.config.runtime_config" title="ollama_forge.config.runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">runtime_config</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Functions</p>
+<hr class="docutils" />
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.safe_sysconf" title="ollama_forge.config.safe_sysconf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_sysconf</span></code></a>(→ int)</p></td>
+<td><p>Safely get system configuration values with proper fallback. 🔒</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.calculate_timeout" title="ollama_forge.config.calculate_timeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_timeout</span></code></a>(→ int)</p></td>
+<td><p>Calculate optimal timeout based on system specs - adaptive intelligence! ⚡</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.calculate_context_size" title="ollama_forge.config.calculate_context_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_context_size</span></code></a>(→ int)</p></td>
+<td><p>Calculate optimal context size - more RAM = bigger thoughts! 🧠</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.configure_log_level" title="ollama_forge.config.configure_log_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_log_level</span></code></a>(→ str)</p></td>
+<td><p>Configure optimal log level based on environment. 📊</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.configure_progress_bars" title="ollama_forge.config.configure_progress_bars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_progress_bars</span></code></a>(→ bool)</p></td>
+<td><p>Configure progress bars for optimal user experience. 📊</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.configure_user_directories" title="ollama_forge.config.configure_user_directories"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_user_directories</span></code></a>(→ Dict[str, str])</p></td>
+<td><p>Configure user directories based on platform. 🗂️</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.validate_input" title="ollama_forge.config.validate_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_input</span></code></a>(→ Callable[[F], F])</p></td>
+<td><p>Decorator for input validation with humor-infused error messages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.safe_dict_get" title="ollama_forge.config.safe_dict_get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_dict_get</span></code></a>(→ Optional[T])</p></td>
+<td><p>Safely retrieve a value from a dict - no KeyErrors here! 🛡️</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_version_string" title="ollama_forge.config.get_version_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_version_string</span></code></a>(→ str)</p></td>
+<td><p>Return the full version string with optimal caching. ✨</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_version_tuple" title="ollama_forge.config.get_version_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_version_tuple</span></code></a>(→ Tuple[int, int, int])</p></td>
+<td><p>Return version as a tuple of (major, minor, patch). 📊</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_release_date" title="ollama_forge.config.get_release_date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_release_date</span></code></a>(→ str)</p></td>
+<td><p>Return the release date of the current version. 📅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_build_age" title="ollama_forge.config.get_build_age"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_build_age</span></code></a>(→ int)</p></td>
+<td><p>Return the age of the build in seconds - how old is your code? 👴</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_package_age" title="ollama_forge.config.get_package_age"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_package_age</span></code></a>(→ int)</p></td>
+<td><p>Return the age of the package in days since inception. 🎂</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_author_string" title="ollama_forge.config.get_author_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_author_string</span></code></a>(→ str)</p></td>
+<td><p>Return a formatted author string with optimal caching. 👥</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_email_string" title="ollama_forge.config.get_email_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_email_string</span></code></a>(→ str)</p></td>
+<td><p>Return a formatted email string with optimal caching. 📧</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.is_string" title="ollama_forge.config.is_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_string</span></code></a>(→ bool)</p></td>
+<td><p>Check if value is a string. Simple yet essential! 📝</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_default_api_endpoint" title="ollama_forge.config.get_default_api_endpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_default_api_endpoint</span></code></a>(→ str)</p></td>
+<td><p>Get the API endpoint for a specific operation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.is_debug_mode" title="ollama_forge.config.is_debug_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_debug_mode</span></code></a>(→ bool)</p></td>
+<td><p>Check if debug mode is enabled - are we wearing our X-ray specs? 🕶️</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_system_info" title="ollama_forge.config.get_system_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_system_info</span></code></a>(→ Dict[str, Any])</p></td>
+<td><p>Return detailed system information for optimal configuration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_optimal_batch_size" title="ollama_forge.config.get_optimal_batch_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_optimal_batch_size</span></code></a>(→ int)</p></td>
+<td><p>Calculate optimal batch size based on system resources.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.update_runtime_config" title="ollama_forge.config.update_runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_runtime_config</span></code></a>(→ bool)</p></td>
+<td><p>Update a runtime configuration value with change tracking.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_runtime_config" title="ollama_forge.config.get_runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_runtime_config</span></code></a>(→ Any)</p></td>
+<td><p>Get a runtime configuration value with intelligent defaults.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.reset_runtime_config" title="ollama_forge.config.reset_runtime_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_runtime_config</span></code></a>(→ None)</p></td>
+<td><p>Reset runtime configuration to optimal defaults.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../docs/api/ollama_forge.html#ollama_forge.config.get_config_summary" title="ollama_forge.config.get_config_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config_summary</span></code></a>(→ Dict[str, Any])</p></td>
+<td><p>Generate a summary of current configuration state.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Module Contents</p>
+<hr class="docutils" />
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.T">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">T</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#T"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.T" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.F">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">F</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#F"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.F" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.SYSTEM">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">SYSTEM</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#SYSTEM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.SYSTEM" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_WINDOWS">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_WINDOWS</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_WINDOWS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_WINDOWS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_MACOS">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_MACOS</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_MACOS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_MACOS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_LINUX">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_LINUX</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_LINUX"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_LINUX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_ARM64">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_ARM64</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_ARM64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_ARM64" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_X86_64">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_X86_64</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_X86_64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_X86_64" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.CPU_COUNT">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">CPU_COUNT</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#CPU_COUNT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.CPU_COUNT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.safe_sysconf">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">safe_sysconf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#safe_sysconf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.safe_sysconf" title="Link to this definition">¶</a></dt>
+<dd><p>Safely get system configuration values with proper fallback. 🔒
+Accepts both string constants and integer values for maximum flexibility.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.MEMORY_MB">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">MEMORY_MB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#MEMORY_MB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.MEMORY_MB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_CONTAINER">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_CONTAINER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_CONTAINER"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_CONTAINER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.IS_CI_ENV">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">IS_CI_ENV</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#IS_CI_ENV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.IS_CI_ENV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.PACKAGE_NAME">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">PACKAGE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Ollama</span> <span class="pre">Forge'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#PACKAGE_NAME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.PACKAGE_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.PACKAGE_NAME_NORMALIZED">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">PACKAGE_NAME_NORMALIZED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ollama_forge'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#PACKAGE_NAME_NORMALIZED"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.PACKAGE_NAME_NORMALIZED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.VERSION_MAJOR">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">VERSION_MAJOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#VERSION_MAJOR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.VERSION_MAJOR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.VERSION_MINOR">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">VERSION_MINOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#VERSION_MINOR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.VERSION_MINOR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.VERSION_PATCH">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">VERSION_PATCH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#VERSION_PATCH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.VERSION_PATCH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.VERSION">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">VERSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'0.1.9'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#VERSION"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.VERSION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.VERSION_RELEASE_DATE">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">VERSION_RELEASE_DATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'2025-01-15'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#VERSION_RELEASE_DATE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.VERSION_RELEASE_DATE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.BUILD_TIMESTAMP">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">BUILD_TIMESTAMP</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#BUILD_TIMESTAMP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.BUILD_TIMESTAMP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.PACKAGE_BIRTHDAY">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">PACKAGE_BIRTHDAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1704067200</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#PACKAGE_BIRTHDAY"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.PACKAGE_BIRTHDAY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEFAULT_OLLAMA_API_URL">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_OLLAMA_API_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'http://localhost:11434'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEFAULT_OLLAMA_API_URL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEFAULT_OLLAMA_API_URL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.calculate_timeout">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">calculate_timeout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#calculate_timeout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.calculate_timeout" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate optimal timeout based on system specs - adaptive intelligence! ⚡</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEFAULT_TIMEOUT">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_TIMEOUT</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEFAULT_TIMEOUT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEFAULT_TIMEOUT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEFAULT_MAX_RETRIES">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_RETRIES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEFAULT_MAX_RETRIES"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEFAULT_MAX_RETRIES" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEFAULT_CHAT_MODEL">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_CHAT_MODEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'deepseek-r1:1.5b'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEFAULT_CHAT_MODEL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEFAULT_CHAT_MODEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.BACKUP_CHAT_MODEL">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">BACKUP_CHAT_MODEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'qwen2.5:0.5b-Instruct'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#BACKUP_CHAT_MODEL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.BACKUP_CHAT_MODEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEFAULT_EMBEDDING_MODEL">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_EMBEDDING_MODEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'deepseek-r1:1.5b'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEFAULT_EMBEDDING_MODEL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEFAULT_EMBEDDING_MODEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.BACKUP_EMBEDDING_MODEL">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">BACKUP_EMBEDDING_MODEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'qwen2.5:0.5b-Instruct'</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#BACKUP_EMBEDDING_MODEL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.BACKUP_EMBEDDING_MODEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEFAULT_MIN_CONTEXT">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MIN_CONTEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2048</span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEFAULT_MIN_CONTEXT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEFAULT_MIN_CONTEXT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.calculate_context_size">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">calculate_context_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#calculate_context_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.calculate_context_size" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate optimal context size - more RAM = bigger thoughts! 🧠</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.RECOMMENDED_CONTEXT">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">RECOMMENDED_CONTEXT</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#RECOMMENDED_CONTEXT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.RECOMMENDED_CONTEXT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.AUTHORS">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">AUTHORS</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#AUTHORS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.AUTHORS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DEBUG_MODE">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DEBUG_MODE</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DEBUG_MODE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DEBUG_MODE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.VERBOSE_MODE">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">VERBOSE_MODE</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#VERBOSE_MODE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.VERBOSE_MODE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.configure_log_level">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">configure_log_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#configure_log_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.configure_log_level" title="Link to this definition">¶</a></dt>
+<dd><p>Configure optimal log level based on environment. 📊</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.LOG_LEVEL">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">LOG_LEVEL</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#LOG_LEVEL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.LOG_LEVEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.configure_progress_bars">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">configure_progress_bars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#configure_progress_bars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.configure_progress_bars" title="Link to this definition">¶</a></dt>
+<dd><p>Configure progress bars for optimal user experience. 📊</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.DISABLE_PROGRESS_BARS">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">DISABLE_PROGRESS_BARS</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#DISABLE_PROGRESS_BARS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.DISABLE_PROGRESS_BARS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.configure_user_directories">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">configure_user_directories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#configure_user_directories"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.configure_user_directories" title="Link to this definition">¶</a></dt>
+<dd><p>Configure user directories based on platform. 🗂️</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.user_dirs">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">user_dirs</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#user_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.user_dirs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.USER_CONFIG_DIR">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">USER_CONFIG_DIR</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#USER_CONFIG_DIR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.USER_CONFIG_DIR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.USER_CACHE_DIR">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">USER_CACHE_DIR</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#USER_CACHE_DIR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.USER_CACHE_DIR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.USER_DATA_DIR">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">USER_DATA_DIR</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#USER_DATA_DIR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.USER_DATA_DIR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.API_ENDPOINTS">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">API_ENDPOINTS</span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#API_ENDPOINTS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.API_ENDPOINTS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.validate_input">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">validate_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">validator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="pre">Ellipsis</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">F</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">F</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#validate_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.validate_input" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator for input validation with humor-infused error messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>validator</strong> – Function returning bool indicating if input is valid</p></li>
+<li><p><strong>error_msg</strong> – Optional custom error message</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Decorated function with validation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.safe_dict_get">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">safe_dict_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#safe_dict_get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.safe_dict_get" title="Link to this definition">¶</a></dt>
+<dd><p>Safely retrieve a value from a dict - no KeyErrors here! 🛡️</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> – Dictionary to retrieve from</p></li>
+<li><p><strong>key</strong> – Key to look up</p></li>
+<li><p><strong>default</strong> – Value to return if key is missing</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value from dict or default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_version_string">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_version_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_version_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_version_string" title="Link to this definition">¶</a></dt>
+<dd><p>Return the full version string with optimal caching. ✨</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_version_tuple">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_version_tuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_version_tuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_version_tuple" title="Link to this definition">¶</a></dt>
+<dd><p>Return version as a tuple of (major, minor, patch). 📊</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_release_date">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_release_date</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_release_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_release_date" title="Link to this definition">¶</a></dt>
+<dd><p>Return the release date of the current version. 📅</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_build_age">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_build_age</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_build_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_build_age" title="Link to this definition">¶</a></dt>
+<dd><p>Return the age of the build in seconds - how old is your code? 👴</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_package_age">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_package_age</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_package_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_package_age" title="Link to this definition">¶</a></dt>
+<dd><p>Return the age of the package in days since inception. 🎂</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_author_string">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_author_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_author_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_author_string" title="Link to this definition">¶</a></dt>
+<dd><p>Return a formatted author string with optimal caching. 👥</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_email_string">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_email_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_email_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_email_string" title="Link to this definition">¶</a></dt>
+<dd><p>Return a formatted email string with optimal caching. 📧</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.is_string">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">is_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#is_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.is_string" title="Link to this definition">¶</a></dt>
+<dd><p>Check if value is a string. Simple yet essential! 📝</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_default_api_endpoint">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_default_api_endpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_default_api_endpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_default_api_endpoint" title="Link to this definition">¶</a></dt>
+<dd><p>Get the API endpoint for a specific operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>operation</strong> – API operation name (e.g., ‘chat’, ‘generate’)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Endpoint URL path or empty string if not found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.is_debug_mode">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">is_debug_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#is_debug_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.is_debug_mode" title="Link to this definition">¶</a></dt>
+<dd><p>Check if debug mode is enabled - are we wearing our X-ray specs? 🕶️</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_system_info">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_system_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_system_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_system_info" title="Link to this definition">¶</a></dt>
+<dd><p>Return detailed system information for optimal configuration.
+Like a digital doctor’s checkup for your environment! 🩺</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_optimal_batch_size">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_optimal_batch_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_optimal_batch_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_optimal_batch_size" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate optimal batch size based on system resources.
+Because one size definitely doesn’t fit all! 📏</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ollama_forge.config.runtime_config">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">runtime_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="reference internal" href="../../../_modules/ollama_forge/config.html#runtime_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.runtime_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.update_runtime_config">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">update_runtime_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#update_runtime_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.update_runtime_config" title="Link to this definition">¶</a></dt>
+<dd><p>Update a runtime configuration value with change tracking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – Configuration key to update</p></li>
+<li><p><strong>value</strong> – New value to set</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if update successful, False if key unknown</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_runtime_config">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_runtime_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_runtime_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_runtime_config" title="Link to this definition">¶</a></dt>
+<dd><p>Get a runtime configuration value with intelligent defaults.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – Configuration key to retrieve</p></li>
+<li><p><strong>default</strong> – Fallback value if key doesn’t exist</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The configuration value or default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.reset_runtime_config">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">reset_runtime_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#reset_runtime_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.reset_runtime_config" title="Link to this definition">¶</a></dt>
+<dd><p>Reset runtime configuration to optimal defaults.
+Like hitting the cosmic reset button! 🔄</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ollama_forge.config.get_config_summary">
+<span class="sig-prename descclassname"><span class="pre">ollama_forge.config.</span></span><span class="sig-name descname"><span class="pre">get_config_summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/ollama_forge/config.html#get_config_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ollama_forge.config.get_config_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a summary of current configuration state.
+The TL;DR of your setup! 📋</p>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Lloyd Handyside
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">ollama_forge.config</a><ul>
+<li><a class="reference internal" href="#ollama_forge.config.T"><code class="docutils literal notranslate"><span class="pre">T</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.F"><code class="docutils literal notranslate"><span class="pre">F</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.SYSTEM"><code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_WINDOWS"><code class="docutils literal notranslate"><span class="pre">IS_WINDOWS</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_MACOS"><code class="docutils literal notranslate"><span class="pre">IS_MACOS</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_LINUX"><code class="docutils literal notranslate"><span class="pre">IS_LINUX</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_ARM64"><code class="docutils literal notranslate"><span class="pre">IS_ARM64</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_X86_64"><code class="docutils literal notranslate"><span class="pre">IS_X86_64</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.CPU_COUNT"><code class="docutils literal notranslate"><span class="pre">CPU_COUNT</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.safe_sysconf"><code class="docutils literal notranslate"><span class="pre">safe_sysconf()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.MEMORY_MB"><code class="docutils literal notranslate"><span class="pre">MEMORY_MB</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_CONTAINER"><code class="docutils literal notranslate"><span class="pre">IS_CONTAINER</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.IS_CI_ENV"><code class="docutils literal notranslate"><span class="pre">IS_CI_ENV</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.PACKAGE_NAME"><code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.PACKAGE_NAME_NORMALIZED"><code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME_NORMALIZED</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.VERSION_MAJOR"><code class="docutils literal notranslate"><span class="pre">VERSION_MAJOR</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.VERSION_MINOR"><code class="docutils literal notranslate"><span class="pre">VERSION_MINOR</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.VERSION_PATCH"><code class="docutils literal notranslate"><span class="pre">VERSION_PATCH</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.VERSION"><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.VERSION_RELEASE_DATE"><code class="docutils literal notranslate"><span class="pre">VERSION_RELEASE_DATE</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.BUILD_TIMESTAMP"><code class="docutils literal notranslate"><span class="pre">BUILD_TIMESTAMP</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.PACKAGE_BIRTHDAY"><code class="docutils literal notranslate"><span class="pre">PACKAGE_BIRTHDAY</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEFAULT_OLLAMA_API_URL"><code class="docutils literal notranslate"><span class="pre">DEFAULT_OLLAMA_API_URL</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.calculate_timeout"><code class="docutils literal notranslate"><span class="pre">calculate_timeout()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEFAULT_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_TIMEOUT</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEFAULT_MAX_RETRIES"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MAX_RETRIES</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEFAULT_CHAT_MODEL"><code class="docutils literal notranslate"><span class="pre">DEFAULT_CHAT_MODEL</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.BACKUP_CHAT_MODEL"><code class="docutils literal notranslate"><span class="pre">BACKUP_CHAT_MODEL</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEFAULT_EMBEDDING_MODEL"><code class="docutils literal notranslate"><span class="pre">DEFAULT_EMBEDDING_MODEL</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.BACKUP_EMBEDDING_MODEL"><code class="docutils literal notranslate"><span class="pre">BACKUP_EMBEDDING_MODEL</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEFAULT_MIN_CONTEXT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_MIN_CONTEXT</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.calculate_context_size"><code class="docutils literal notranslate"><span class="pre">calculate_context_size()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.RECOMMENDED_CONTEXT"><code class="docutils literal notranslate"><span class="pre">RECOMMENDED_CONTEXT</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.AUTHORS"><code class="docutils literal notranslate"><span class="pre">AUTHORS</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DEBUG_MODE"><code class="docutils literal notranslate"><span class="pre">DEBUG_MODE</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.VERBOSE_MODE"><code class="docutils literal notranslate"><span class="pre">VERBOSE_MODE</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.configure_log_level"><code class="docutils literal notranslate"><span class="pre">configure_log_level()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.configure_progress_bars"><code class="docutils literal notranslate"><span class="pre">configure_progress_bars()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.DISABLE_PROGRESS_BARS"><code class="docutils literal notranslate"><span class="pre">DISABLE_PROGRESS_BARS</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.configure_user_directories"><code class="docutils literal notranslate"><span class="pre">configure_user_directories()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.user_dirs"><code class="docutils literal notranslate"><span class="pre">user_dirs</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.USER_CONFIG_DIR"><code class="docutils literal notranslate"><span class="pre">USER_CONFIG_DIR</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.USER_CACHE_DIR"><code class="docutils literal notranslate"><span class="pre">USER_CACHE_DIR</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.USER_DATA_DIR"><code class="docutils literal notranslate"><span class="pre">USER_DATA_DIR</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.API_ENDPOINTS"><code class="docutils literal notranslate"><span class="pre">API_ENDPOINTS</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.validate_input"><code class="docutils literal notranslate"><span class="pre">validate_input()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.safe_dict_get"><code class="docutils literal notranslate"><span class="pre">safe_dict_get()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_version_string"><code class="docutils literal notranslate"><span class="pre">get_version_string()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_version_tuple"><code class="docutils literal notranslate"><span class="pre">get_version_tuple()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_release_date"><code class="docutils literal notranslate"><span class="pre">get_release_date()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_build_age"><code class="docutils literal notranslate"><span class="pre">get_build_age()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_package_age"><code class="docutils literal notranslate"><span class="pre">get_package_age()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_author_string"><code class="docutils literal notranslate"><span class="pre">get_author_string()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_email_string"><code class="docutils literal notranslate"><span class="pre">get_email_string()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.is_string"><code class="docutils literal notranslate"><span class="pre">is_string()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_default_api_endpoint"><code class="docutils literal notranslate"><span class="pre">get_default_api_endpoint()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.is_debug_mode"><code class="docutils literal notranslate"><span class="pre">is_debug_mode()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_system_info"><code class="docutils literal notranslate"><span class="pre">get_system_info()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_optimal_batch_size"><code class="docutils literal notranslate"><span class="pre">get_optimal_batch_size()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.runtime_config"><code class="docutils literal notranslate"><span class="pre">runtime_config</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.update_runtime_config"><code class="docutils literal notranslate"><span class="pre">update_runtime_config()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_runtime_config"><code class="docutils literal notranslate"><span class="pre">get_runtime_config()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.reset_runtime_config"><code class="docutils literal notranslate"><span class="pre">reset_runtime_config()</span></code></a></li>
+<li><a class="reference internal" href="#ollama_forge.config.get_config_summary"><code class="docutils literal notranslate"><span class="pre">get_config_summary()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=dba2a9e9"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=4ea706d9"></script>
+    </body>
+</html>

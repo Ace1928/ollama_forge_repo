@@ -5,169 +5,68 @@ requires = ["setuptools>=61.0.0", "wheel>=0.37.0"]
 build-backend = "setuptools.build_meta"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 📦 Project Core - Dynamic Version Management - Single Source of Truth
+# 📦 Project Core - Single Source of Truth
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# This version field is managed by version_update.py - changes synchronize
-# across config.py and version.py automatically.
-# To update: run `python tools/version_update.py X.Y.Z`
 [project]
-name = "ollama-forge"
-version = "0.1.9"  # AUTO-MANAGED: Do not modify this line manually
-description = "Python client library and CLI for Ollama"
+name = "ollama_forge_repo"
+version = "0.1.0"  # AUTO-MANAGED
+description = "Eidosian ollama_forge_repo repository"
 readme = "README.md"
 authors = [
-    {name = "Lloyd Handyside", email = "ace1928@gmail.com"},
-    {name = "Eidos", email = "syntheticeidos@gmail.com"},
+  {name = "Lloyd Handyside", email = "ace1928@gmail.com"},
+  {name = "Eidos", email = "syntheticeidos@gmail.com"},
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 license = {text = "MIT"}
-keywords = [
-    "ollama", "ai", "llm", "language models", 
-    "toolkit", "eidos", "forge", "embeddings",
-    "inference", "text generation"
-]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-]
-dependencies = [
-    "requests",
-    "aiohttp",
-    "colorama",
-    "numpy",
-    "packaging",
-]
+
+dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/Ace1928/ollama_forge"
-Documentation = "https://ollama-forge.readthedocs.io"
-"Bug Tracker" = "https://github.com/Ace1928/ollama_forge/issues"
-"Source Code" = "https://github.com/Ace1928/ollama_forge"
-Changelog = "https://github.com/Ace1928/ollama_forge/blob/main/CHANGELOG.md"
-
-[project.scripts]
-ollama-forge = "ollama_forge.cli:main"
+Homepage = "https://github.com/Ace1928/ollama_forge_repo"
+Documentation = "https://ollama_forge_repo.readthedocs.io"
+Organization = "https://neuroforge.io"
+"Bug Tracker" = "https://github.com/Ace1928/ollama_forge_repo/issues"
+"Source Code" = "https://github.com/Ace1928/ollama_forge_repo"
+Changelog = "https://github.com/Ace1928/ollama_forge_repo/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
-    "black",
-    "isort",
-    "flake8",
-    "mypy",
-    "pytest",
-    "pytest-cov",
-    "pytest-asyncio",
-    "twine",
-    "build",
+  "black",
+  "isort",
+  "flake8",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+  "build",
+  "twine",
 ]
 docs = [
-    "sphinx>=8.2.3",
-    "furo>=2024.8.6",
-    "sphinx-rtd-theme>=3.0.2",
-    "myst-parser>=4.0.1",
-    "sphinxcontrib-plantuml>=0.2.0",
-    "sphinxcontrib-mermaid>=0.1.0",
-    "sphinx-autoapi>=3.0.0",
-    "sphinx-copybutton>=0.5.2",
-    "sphinx-autodoc-typehints>=3.1.0",
-    "sphinx-autobuild>=2024.10.3",
-    "sphinx-design>=0.6.1",
-    "uvicorn>=0.30.6",
-    "starlette>=0.46.1",
-    "watchfiles>=1.0.4",
-    "websockets>=15.0.1",
-    "httpx>=0.27.0",
-]
-full = [
-    "pandas",
-    "scikit-learn",
-    "matplotlib",
-    "faiss-cpu",
+  "sphinx>=8.2.3",
+  "furo>=2024.8.6",
+  "sphinx-rtd-theme>=3.0.2",
+  "myst-parser>=4.0.1",
+  "sphinxcontrib-plantuml>=0.2.0",
+  "sphinxcontrib-mermaid>=0.1.0",
+  "sphinx-autoapi>=3.0.0",
+  "sphinx-copybutton>=0.5.2",
+  "sphinx-autodoc-typehints>=3.1.0",
+  "sphinx-autobuild>=2024.10.3",
+  "sphinx-design>=0.6.1",
 ]
 
 [tool.black]
 line-length = 88
-target-version = ["py38", "py39", "py310", "py311"]
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.eggs
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | venv
-  | _build
-  | build
-  | dist
-)/
-'''
+target-version = ["py312"]
 
 [tool.isort]
 profile = "black"
 line_length = 88
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
-ensure_newline_before_comments = true
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.12"
 warn_return_any = true
-warn_unused_configs = true
 disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-strict_optional = true
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# 🧪 Test Configuration - Precision and Completeness in Verification
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [tool.pytest.ini_options]
-# Core test behavior - foundational settings
-minversion = "7.0"                                # Minimum pytest version required
-testpaths = ["tests"]                            # Directory containing tests
-python_files = "test_*.py"                       # Pattern for test files
-python_classes = ["Test*"]                       # Pattern for test classes
-python_functions = ["test_*"]                    # Pattern for test functions
-
-# Coverage reporting - visibility into test completeness
-addopts = "--cov=ollama_forge --cov-report=term-missing --cov-report=xml:coverage.xml --no-cov-on-fail"
-
-# Console output - clarity and focus in feedback
-console_output_style = "progress"                # Dynamic progress display
-log_cli = true                                   # Show logs in terminal
-log_cli_level = "INFO"                           # Default log level
-log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
-
-# Async testing - seamless concurrency support
-asyncio_mode = "auto"                            # Auto-detect async tests
-asyncio_default_fixture_loop_scope = "function"  # Isolated loop per test
-
-# Execution - reliability through isolation
-xvs = true                                       # Exit on first failure
-filterwarnings = [
-    "ignore::DeprecationWarning:distutils.*:",   # Ignore common noise
-    "ignore::DeprecationWarning:pkg_resources.*:",
-    "default::DeprecationWarning",               # Show our own deprecations
-]
-
-# Integration testing - adaptable to environment
-markers = [
-    "integration: tests that require running services",
-    "slow: tests that take longer than 1 second",
-    "requires_ollama: tests that require ollama to be installed",
-]
+testpaths = ["tests"]
+python_files = "test_*.py"

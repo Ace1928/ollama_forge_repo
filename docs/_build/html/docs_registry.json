@@ -1,0 +1,276 @@
+{
+  "generated_at": "2025-03-12T02:17:28.170700",
+  "doc_count": 45,
+  "items": [
+    {
+      "path": "search.html",
+      "title": "Search - Ollama Forge 0.1.9 documentation",
+      "size": 16408,
+      "last_modified": 1741709848.0797179
+    },
+    {
+      "path": "examples.html",
+      "title": "Examples - Ollama Forge 0.1.9 documentation",
+      "size": 61000,
+      "last_modified": 1741704285.0619526
+    },
+    {
+      "path": "error_handling.html",
+      "title": "Error Handling - Ollama Forge 0.1.9 documentation",
+      "size": 42514,
+      "last_modified": 1741704285.0239522
+    },
+    {
+      "path": "rtd_tutorial.html",
+      "title": "&lt;no title&gt; - Ollama Forge 0.1.9 documentation",
+      "size": 35952,
+      "last_modified": 1741704285.622959
+    },
+    {
+      "path": "installation.html",
+      "title": "Installation Guide - Ollama Forge 0.1.9 documentation",
+      "size": 30404,
+      "last_modified": 1741704285.1479537
+    },
+    {
+      "path": "README.html",
+      "title": "About the Documentation - Ollama Forge 0.1.9 documentation",
+      "size": 26461,
+      "last_modified": 1741704284.2479439
+    },
+    {
+      "path": "chat.html",
+      "title": "Generate a Chat Completion - Ollama Forge 0.1.9 documentation",
+      "size": 29126,
+      "last_modified": 1741704284.6529481
+    },
+    {
+      "path": "py-modindex.html",
+      "title": "Python Module Index - Ollama Forge 0.1.9 documentation",
+      "size": 18037,
+      "last_modified": 1741709847.8937125
+    },
+    {
+      "path": "requirements.html",
+      "title": "&lt;no title&gt; - Ollama Forge 0.1.9 documentation",
+      "size": 16924,
+      "last_modified": 1741704285.5869584
+    },
+    {
+      "path": "troubleshooting.html",
+      "title": "Troubleshooting Guide - Ollama Forge 0.1.9 documentation",
+      "size": 21493,
+      "last_modified": 1741704285.6739595
+    },
+    {
+      "path": "embed.html",
+      "title": "Generate Embeddings - Ollama Forge 0.1.9 documentation",
+      "size": 27731,
+      "last_modified": 1741704284.994952
+    },
+    {
+      "path": "models_api.html",
+      "title": "Models API - Ollama Forge 0.1.9 documentation",
+      "size": 40724,
+      "last_modified": 1741704285.547958
+    },
+    {
+      "path": "changelog.html",
+      "title": "Changelog - Ollama Forge 0.1.9 documentation",
+      "size": 23636,
+      "last_modified": 1741704284.630948
+    },
+    {
+      "path": "conventions.html",
+      "title": "Ollama Forge Conventions - Ollama Forge 0.1.9 documentation",
+      "size": 25953,
+      "last_modified": 1741704284.6949487
+    },
+    {
+      "path": "eidosian_integration.html",
+      "title": "Eidosian Integration - Ollama Forge 0.1.9 documentation",
+      "size": 29366,
+      "last_modified": 1741704284.900951
+    },
+    {
+      "path": "api_reference.html",
+      "title": "API Reference - Ollama Forge 0.1.9 documentation",
+      "size": 59403,
+      "last_modified": 1741704284.3289447
+    },
+    {
+      "path": "advanced_usage.html",
+      "title": "Advanced Usage - Ollama Forge 0.1.9 documentation",
+      "size": 18880,
+      "last_modified": 1741704284.263944
+    },
+    {
+      "path": "quickstart.html",
+      "title": "Quickstart Guide - Ollama Forge 0.1.9 documentation",
+      "size": 28132,
+      "last_modified": 1741704285.5729582
+    },
+    {
+      "path": "index.html",
+      "title": "Ollama Forge 0.1.9 documentation",
+      "size": 41917,
+      "last_modified": 1741704285.1209533
+    },
+    {
+      "path": "contributing.html",
+      "title": "Contributing Guide - Ollama Forge 0.1.9 documentation",
+      "size": 20825,
+      "last_modified": 1741704284.6679485
+    },
+    {
+      "path": "eidosian_principles.html",
+      "title": "1\ufe0f\u20e3 Contextual Integrity \ud83c\udf00\ud83d\udcc8 - Ollama Forge 0.1.9 documentation",
+      "size": 85176,
+      "last_modified": 1741704284.9719517
+    },
+    {
+      "path": "genindex.html",
+      "title": "Index - Ollama Forge 0.1.9 documentation",
+      "size": 62133,
+      "last_modified": 1741709847.875712
+    },
+    {
+      "path": "system_api.html",
+      "title": "System API - Ollama Forge 0.1.9 documentation",
+      "size": 32120,
+      "last_modified": 1741704285.652959
+    },
+    {
+      "path": "generate.html",
+      "title": "Generate a Completion - Ollama Forge 0.1.9 documentation",
+      "size": 27456,
+      "last_modified": 1741704285.085953
+    },
+    {
+      "path": "model_management.html",
+      "title": "Model Management - Ollama Forge 0.1.9 documentation",
+      "size": 45622,
+      "last_modified": 1741704285.177954
+    },
+    {
+      "path": "version.html",
+      "title": "Version Endpoint - Ollama Forge 0.1.9 documentation",
+      "size": 22116,
+      "last_modified": 1741704285.6939597
+    },
+    {
+      "path": "_modules/ollama_forge.html",
+      "title": "ollama_forge - Ollama Forge 0.1.9 documentation",
+      "size": 42925,
+      "last_modified": 1741709847.910713
+    },
+    {
+      "path": "_modules/index.html",
+      "title": "Overview: module code - Ollama Forge 0.1.9 documentation",
+      "size": 16737,
+      "last_modified": 1741709848.0557172
+    },
+    {
+      "path": "autoapi/index.html",
+      "title": "API Reference - Ollama Forge 0.1.9 documentation",
+      "size": 18909,
+      "last_modified": 1741696793.3420515
+    },
+    {
+      "path": "_modules/ollama_forge/exceptions.html",
+      "title": "ollama_forge.exceptions - Ollama Forge 0.1.9 documentation",
+      "size": 30271,
+      "last_modified": 1741709848.044717
+    },
+    {
+      "path": "_modules/ollama_forge/cli.html",
+      "title": "ollama_forge.cli - Ollama Forge 0.1.9 documentation",
+      "size": 22350,
+      "last_modified": 1741709847.9367137
+    },
+    {
+      "path": "_modules/ollama_forge/__main__.html",
+      "title": "ollama_forge.__main__ - Ollama Forge 0.1.9 documentation",
+      "size": 35127,
+      "last_modified": 1741709847.9257135
+    },
+    {
+      "path": "_modules/ollama_forge/config.html",
+      "title": "ollama_forge.config - Ollama Forge 0.1.9 documentation",
+      "size": 101644,
+      "last_modified": 1741709848.0327165
+    },
+    {
+      "path": "_modules/ollama_forge/client.html",
+      "title": "ollama_forge.client - Ollama Forge 0.1.9 documentation",
+      "size": 132490,
+      "last_modified": 1741709848.0037158
+    },
+    {
+      "path": "_modules/ollama_forge/cli/commands.html",
+      "title": "ollama_forge.cli.commands - Ollama Forge 0.1.9 documentation",
+      "size": 71411,
+      "last_modified": 1741709847.9607146
+    },
+    {
+      "path": "autoapi/ollama_forge/index.html",
+      "title": "ollama_forge - Ollama Forge 0.1.9 documentation",
+      "size": 30164,
+      "last_modified": 1741709847.6507053
+    },
+    {
+      "path": "autoapi/ollama_forge/cli/index.html",
+      "title": "ollama_forge.cli - Ollama Forge 0.1.9 documentation",
+      "size": 110443,
+      "last_modified": 1741709847.2896948
+    },
+    {
+      "path": "autoapi/ollama_forge/exceptions/index.html",
+      "title": "ollama_forge.exceptions - Ollama Forge 0.1.9 documentation",
+      "size": 65780,
+      "last_modified": 1741709847.6277046
+    },
+    {
+      "path": "autoapi/ollama_forge/client/index.html",
+      "title": "ollama_forge.client - Ollama Forge 0.1.9 documentation",
+      "size": 98046,
+      "last_modified": 1741709847.4186985
+    },
+    {
+      "path": "autoapi/ollama_forge/config/index.html",
+      "title": "ollama_forge.config - Ollama Forge 0.1.9 documentation",
+      "size": 109639,
+      "last_modified": 1741709847.570703
+    },
+    {
+      "path": "autoapi/ollama_forge/__main__/index.html",
+      "title": "ollama_forge.__main__ - Ollama Forge 0.1.9 documentation",
+      "size": 27117,
+      "last_modified": 1741709847.0836887
+    },
+    {
+      "path": "autoapi/ollama_forge/cli/commands/index.html",
+      "title": "ollama_forge.cli.commands - Ollama Forge 0.1.9 documentation",
+      "size": 46645,
+      "last_modified": 1741709847.1126897
+    },
+    {
+      "path": "docs/api/ollama_forge.html",
+      "title": "ollama_forge package - Ollama Forge 0.1.9 documentation",
+      "size": 237174,
+      "last_modified": 1741709847.7907095
+    },
+    {
+      "path": "docs/api/ollama_forge.cli.html",
+      "title": "ollama_forge.cli package - Ollama Forge 0.1.9 documentation",
+      "size": 42084,
+      "last_modified": 1741709847.838711
+    },
+    {
+      "path": "docs/api/modules.html",
+      "title": "ollama_forge - Ollama Forge 0.1.9 documentation",
+      "size": 38492,
+      "last_modified": 1741709847.671706
+    }
+  ]
+}
