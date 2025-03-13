@@ -31,8 +31,6 @@ python:
       extra_requirements:
         - docs  # Install documentation extras from pyproject.toml
     - requirements: docs/requirements.txt
-      extra_pip_args:
-        - --no-cache-dir  # Skip cache for fresh installs
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📘 Sphinx configuration - Structure as control
