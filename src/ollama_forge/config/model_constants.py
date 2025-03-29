@@ -93,7 +93,7 @@ def get_fallback_model(model_name: str, model_type: str = MODEL_TYPE_CHAT) -> st
         default_fallback = BACKUP_CHAT_MODEL
 
     # Try to find a model of similar size/capability
-    for size, models in RECOMMENDED_MODELS.items():
+    for _, models in RECOMMENDED_MODELS.items():
         if model_type in models and any(
             model_name.startswith(m.split(":")[0]) for m in models[model_type]
         ):

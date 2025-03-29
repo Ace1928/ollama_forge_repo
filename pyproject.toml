@@ -1,33 +1,33 @@
 # 🌀 Pyproject with Eidosian harmony – universal and adaptive! 🌍
 
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel>=0.37.0"]
+requires      = [ "setuptools>=61.0.0", "wheel>=0.37.0" ]
 build-backend = "setuptools.build_meta"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📦 Project Core - Single Source of Truth
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [project]
-name = "ollama_forge_repo"
-version = "0.1.0"  # AUTO-MANAGED
-description = "Eidosian ollama_forge_repo repository"
+name = "ollama_forge"
+version = "0.1.0" # AUTO-MANAGED
+description = "Eidosian ollama forge repository"
 readme = "README.md"
 authors = [
-  {name = "Lloyd Handyside", email = "ace1928@gmail.com"},
-  {name = "Eidos", email = "syntheticeidos@gmail.com"},
+  { name = "Lloyd Handyside", email = "ace1928@gmail.com" },
+  { name = "Eidos", email = "syntheticeidos@gmail.com" },
 ]
 requires-python = ">=3.12"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
-dependencies = []
+dependencies = [  ]
 
 [project.urls]
-Homepage = "https://github.com/Ace1928/ollama_forge_repo"
-Documentation = "https://ollama_forge_repo.readthedocs.io"
-Organization = "https://neuroforge.io"
-"Bug Tracker" = "https://github.com/Ace1928/ollama_forge_repo/issues"
-"Source Code" = "https://github.com/Ace1928/ollama_forge_repo"
-Changelog = "https://github.com/Ace1928/ollama_forge_repo/blob/main/CHANGELOG.md"
+Homepage      = "https://github.com/Ace1928/ollama_forge"
+Documentation = "https://ollama_forge.readthedocs.io"
+Organization  = "https://neuroforge.io"
+"Bug Tracker" = "https://github.com/Ace1928/ollama_forge/issues"
+"Source Code" = "https://github.com/Ace1928/ollama_forge"
+Changelog     = "https://github.com/Ace1928/ollama_forge/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
@@ -55,18 +55,18 @@ docs = [
 ]
 
 [tool.black]
-line-length = 88
-target-version = ["py312"]
+line-length    = 88
+target-version = [ "py312" ]
 
 [tool.isort]
-profile = "black"
+profile     = "black"
 line_length = 88
 
 [tool.mypy]
-python_version = "3.12"
-warn_return_any = true
+python_version        = "3.12"
+warn_return_any       = true
 disallow_untyped_defs = true
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths    = [ "tests" ]
 python_files = "test_*.py"

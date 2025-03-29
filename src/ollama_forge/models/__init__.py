@@ -65,6 +65,19 @@ class ModelSize:
             return None
 
 
+class DownloadProgress(Protocol):
+    """Protocol for reporting download progress."""
+
+    def update(self, bytes_downloaded: int, total_bytes: int) -> None:
+        """Update progress with downloaded bytes.
+
+        Args:
+            bytes_downloaded: Number of bytes downloaded so far
+            total_bytes: Total bytes to download (may be 0 if unknown)
+        """
+        ...
+
+
 @dataclass
 class ModelInfo:
     """Universal model information representation across sources."""
@@ -103,11 +116,14 @@ class ModelInfo:
 class ModelProvider(Protocol):
     """Protocol defining the interface for model source providers."""
 
-    def list_models(self, query: Optional[str] = None, **kwargs) -> List[ModelInfo]:
+    def list_models(
+        self, query: Optional[str] = None, installed_only: bool = False, **kwargs
+    ) -> List[ModelInfo]:
         """List available models from this source.
 
         Args:
             query: Optional search query
+            installed_only: If True, only return installed models
             **kwargs: Additional source-specific parameters
 
         Returns:
@@ -130,11 +146,14 @@ class ModelProvider(Protocol):
 class ModelInstaller(Protocol):
     """Protocol for model installation capabilities."""
 
-    def install_model(self, model: ModelInfo) -> bool:
+    def install_model(
+        self, model: ModelInfo, progress_callback: Optional[DownloadProgress] = None
+    ) -> bool:
         """Install a model from its source.
 
         Args:
             model: Model to install
+            progress_callback: Optional callback for reporting installation progress
 
         Returns:
             bool: True if installation was successful
@@ -161,4 +180,5 @@ __all__ = [
     "ModelInfo",
     "ModelProvider",
     "ModelInstaller",
+    "DownloadProgress",
 ]

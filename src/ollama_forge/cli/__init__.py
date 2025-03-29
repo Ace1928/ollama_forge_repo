@@ -5,8 +5,7 @@ Eidosian synergy: minimal redundancy, immediate utility.
 
 from typing import List, Optional
 
-from ..core.client import OllamaClient
-from .commands import (
+from ollama_forge.src.ollama_forge.cli.commands import (
     create_parser,
     handle_chat,
     handle_chat_session,
@@ -15,6 +14,7 @@ from .commands import (
     handle_list,
     handle_pull,
 )
+from ollama_forge.src.ollama_forge.core import OllamaClient
 
 
 def main(args: Optional[List[str]] = None) -> int:

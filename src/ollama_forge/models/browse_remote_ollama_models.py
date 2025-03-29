@@ -585,21 +585,36 @@ class OllamaLibraryScraper:
     def _fetch_detailed_information(self) -> None:
         """Fetch detailed information for all models concurrently.
 
-        Uses asyncio to efficiently retrieve detailed information for multiple
-        models in parallel, limiting concurrency with a semaphore to prevent
-        overwhelming the server.
+        Uses appropriate concurrency mechanism based on context - avoiding
+        nested event loops when called from an already running loop.
         """
-        # Establish or reuse an asyncio event loop
+        # Check if we're already in an event loop
         try:
-            loop = asyncio.get_event_loop()
-        except RuntimeError:
-            # Create a new event loop if there isn't one in this thread
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
+            asyncio.get_running_loop()
+            # We're in an event loop, use a ThreadPoolExecutor instead
+            import concurrent.futures
 
-        # Create tasks for all models and execute them concurrently
-        tasks = [self._fetch_model_details(model) for model in self.models]
-        loop.run_until_complete(asyncio.gather(*tasks))
+            with concurrent.futures.ThreadPoolExecutor(
+                max_workers=self.config.concurrent_requests
+            ) as executor:
+                # Execute detail extraction concurrently using threads
+                futures = [
+                    executor.submit(self.detail_extractor.extract_model_details, model)
+                    for model in self.models
+                ]
+                concurrent.futures.wait(futures)  # Wait for all extractions to complete
+        except RuntimeError:
+            # Not in an event loop, proceed with normal asyncio approach
+            try:
+                loop = asyncio.get_event_loop()
+            except RuntimeError:
+                # Create a new event loop if there isn't one in this thread
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+
+            # Create tasks for all models and execute them concurrently
+            tasks = [self._fetch_model_details(model) for model in self.models]
+            loop.run_until_complete(asyncio.gather(*tasks))
 
     async def _fetch_model_details(self, model: OllamaModel) -> None:
         """Asynchronously fetch detailed information for a single model.
