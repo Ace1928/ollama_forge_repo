@@ -5,25 +5,25 @@ Eidosian synergy: minimal redundancy, immediate utility.
 
 from typing import List, Optional
 
+from ..core.client import OllamaClient
 from .commands import (
     create_parser,
-    handle_generate,
     handle_chat,
     handle_chat_session,
     handle_embed,
+    handle_generate,
     handle_list,
     handle_pull,
 )
-from ..client import OllamaClient
 
 
 def main(args: Optional[List[str]] = None) -> int:
     """
     Main entry point for the CLI with perfect flow control.
-    
+
     Args:
         args: Command line arguments (uses sys.argv if None)
-        
+
     Returns:
         Exit code (0 for success)
     """

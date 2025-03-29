@@ -11,8 +11,8 @@ import argparse
 import sys
 import textwrap
 
-from ..client import OllamaClient
-from ..config import get_version_string, DEFAULT_CHAT_MODEL, DEFAULT_EMBEDDING_MODEL
+from ..config import DEFAULT_CHAT_MODEL, DEFAULT_EMBEDDING_MODEL, get_version_string
+from ..core.client import OllamaClient
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -30,28 +30,56 @@ def create_parser() -> argparse.ArgumentParser:
             """
         ),
     )
-    parser.add_argument("--version", action="version", version=f"Ollama Forge v{get_version_string()}")
-    parser.add_argument("--api-url", help="Ollama API URL (default: http://localhost:11434)", default=None)
-    parser.add_argument("--verbose", "-v", action="store_true", help="Enable verbose output")
+    parser.add_argument(
+        "--version", action="version", version=f"Ollama Forge v{get_version_string()}"
+    )
+    parser.add_argument(
+        "--api-url",
+        help="Ollama API URL (default: http://localhost:11434)",
+        default=None,
+    )
+    parser.add_argument(
+        "--verbose", "-v", action="store_true", help="Enable verbose output"
+    )
     subparsers = parser.add_subparsers(dest="command", help="Command to execute")
 
-    generate_parser = subparsers.add_parser("generate", help="Generate text from a prompt")
-    generate_parser.add_argument("--model", "-m", default=DEFAULT_CHAT_MODEL, help="Model name")
-    generate_parser.add_argument("--temperature", "-t", type=float, default=0.7, help="Sampling temperature")
-    generate_parser.add_argument("--stream", "-s", action="store_true", help="Stream output tokens")
+    generate_parser = subparsers.add_parser(
+        "generate", help="Generate text from a prompt"
+    )
+    generate_parser.add_argument(
+        "--model", "-m", default=DEFAULT_CHAT_MODEL, help="Model name"
+    )
+    generate_parser.add_argument(
+        "--temperature", "-t", type=float, default=0.7, help="Sampling temperature"
+    )
+    generate_parser.add_argument(
+        "--stream", "-s", action="store_true", help="Stream output tokens"
+    )
     generate_parser.add_argument("prompt", help="The prompt to generate from")
 
     chat_parser = subparsers.add_parser("chat", help="Chat with a model")
-    chat_parser.add_argument("--model", "-m", default=DEFAULT_CHAT_MODEL, help="Model name")
-    chat_parser.add_argument("--system", default="You are a helpful assistant.", help="System message")
+    chat_parser.add_argument(
+        "--model", "-m", default=DEFAULT_CHAT_MODEL, help="Model name"
+    )
+    chat_parser.add_argument(
+        "--system", default="You are a helpful assistant.", help="System message"
+    )
     chat_parser.add_argument("message", help="User message to send")
 
-    chat_session_parser = subparsers.add_parser("chat-session", help="Start interactive chat session")
-    chat_session_parser.add_argument("--model", "-m", default=DEFAULT_CHAT_MODEL, help="Model name")
-    chat_session_parser.add_argument("--system", default="You are a helpful assistant.", help="System message")
+    chat_session_parser = subparsers.add_parser(
+        "chat-session", help="Start interactive chat session"
+    )
+    chat_session_parser.add_argument(
+        "--model", "-m", default=DEFAULT_CHAT_MODEL, help="Model name"
+    )
+    chat_session_parser.add_argument(
+        "--system", default="You are a helpful assistant.", help="System message"
+    )
 
     embed_parser = subparsers.add_parser("embed", help="Generate embeddings for text")
-    embed_parser.add_argument("--model", "-m", default=DEFAULT_EMBEDDING_MODEL, help="Model name")
+    embed_parser.add_argument(
+        "--model", "-m", default=DEFAULT_EMBEDDING_MODEL, help="Model name"
+    )
     embed_parser.add_argument("text", help="Text to embed")
 
     subparsers.add_parser("list", help="List available models")
@@ -68,13 +96,22 @@ def handle_generate(args: argparse.Namespace, client: OllamaClient) -> int:
     """
     if args.stream:
         print(f"Generating with {args.model} (streaming)...")
-        for chunk in client.generate(model=args.model, prompt=args.prompt, stream=True, options={"temperature": args.temperature}):
+        for chunk in client.generate(
+            model=args.model,
+            prompt=args.prompt,
+            stream=True,
+            options={"temperature": args.temperature},
+        ):
             if "response" in chunk:
                 print(chunk["response"], end="", flush=True)
         print()
     else:
         print(f"Generating with {args.model}...")
-        response = client.generate(model=args.model, prompt=args.prompt, options={"temperature": args.temperature})
+        response = client.generate(
+            model=args.model,
+            prompt=args.prompt,
+            options={"temperature": args.temperature},
+        )
         print(response.get("response", ""))
     return 0
 
@@ -101,6 +138,7 @@ def handle_chat_session(args: argparse.Namespace, client: OllamaClient) -> int:
     Escape with 'exit' or 'quit'. 🎨🔮
     """
     from colorama import Fore, Style, init
+
     init()
 
     messages = [{"role": "system", "content": args.system}]
@@ -141,7 +179,9 @@ def handle_embed(args: argparse.Namespace, client: OllamaClient) -> int:
     Eidosian embedding generation.
     """
     result = client.create_embedding(model=args.model, prompt=args.text)
-    print(f"Generated embedding with {args.model} (dimensions: {len(result['embedding'])})")
+    print(
+        f"Generated embedding with {args.model} (dimensions: {len(result['embedding'])})"
+    )
     if args.verbose:
         print(result["embedding"])
     return 0
@@ -166,6 +206,7 @@ def handle_pull(args: argparse.Namespace, client: OllamaClient) -> int:
     Pull a model with progress tracking.
     """
     from tqdm import tqdm
+
     print(f"Pulling model: {args.model}")
     with tqdm(unit="B", unit_scale=True, desc=args.model) as pbar:
         last_total = 0
@@ -186,75 +227,83 @@ def generate_command(args: argparse.Namespace) -> int:
     """
     Command function for text generation via the generate subcommand.
     Follows Eidosian principle of elegant delegation.
-    
+
     Args:
         args: Parsed command arguments
-        
+
     Returns:
         Exit code (0 for success)
     """
-    client = OllamaClient(api_url=args.api_url if hasattr(args, 'api_url') else None)
+    client = OllamaClient(api_url=args.api_url if hasattr(args, "api_url") else None)
     return handle_generate(args, client)
+
 
 def chat_command(args: argparse.Namespace) -> int:
     """
     Command function for interactive chat via the chat subcommand.
     Follows Eidosian principle of elegant delegation.
-    
+
     Args:
         args: Parsed command arguments
-        
+
     Returns:
         Exit code (0 for success)
     """
-    client = OllamaClient(api_url=args.api_url if hasattr(args, 'api_url') else None)
-    if getattr(args, 'session', False):
+    client = OllamaClient(api_url=args.api_url if hasattr(args, "api_url") else None)
+    if getattr(args, "session", False):
         return handle_chat_session(args, client)
     return handle_chat(args, client)
+
 
 def embedding_command(args: argparse.Namespace) -> int:
     """
     Command function for embedding generation via the embed subcommand.
     Follows Eidosian principle of elegant delegation.
-    
+
     Args:
         args: Parsed command arguments
-        
+
     Returns:
         Exit code (0 for success)
     """
-    client = OllamaClient(api_url=args.api_url if hasattr(args, 'api_url') else None)
+    client = OllamaClient(api_url=args.api_url if hasattr(args, "api_url") else None)
     return handle_embed(args, client)
+
 
 def models_command(args: argparse.Namespace) -> int:
     """
     Command function for model management via the models subcommand.
     Follows Eidosian principle of elegant delegation.
-    
+
     Args:
         args: Parsed command arguments
-        
+
     Returns:
         Exit code (0 for success)
     """
-    client = OllamaClient(api_url=args.api_url if hasattr(args, 'api_url') else None)
+    client = OllamaClient(api_url=args.api_url if hasattr(args, "api_url") else None)
     return handle_list(args, client)
+
 
 def health_command(args: argparse.Namespace) -> int:
     """
     Command function for health check via the health subcommand.
     Follows Eidosian principle of elegant simplicity.
-    
+
     Args:
         args: Parsed command arguments
-        
+
     Returns:
         Exit code (0 for success)
     """
     try:
-        client = OllamaClient(api_url=args.api_url if hasattr(args, 'api_url') else None)
+        client = OllamaClient(
+            api_url=args.api_url if hasattr(args, "api_url") else None
+        )
         version = client.get_version()
-        print(f"✅ Ollama server is healthy! (version {version.get('version', 'unknown')})")
+        print(
+            f"✅ Ollama server is healthy! (version {version.get('version', 'unknown')})"
+        )
         return 0
     except Exception as e:
         print(f"❌ Ollama server health check failed: {e}")

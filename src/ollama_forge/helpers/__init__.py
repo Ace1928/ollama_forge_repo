@@ -46,7 +46,8 @@ from embedding import (
     normalize_vector,
     process_embeddings_response,
 )
-from model_constants import (
+
+from ollama_forge.src.ollama_forge.config.model_constants import (
     BACKUP_CHAT_MODEL,
     BACKUP_EMBEDDING_MODEL,
     DEFAULT_CHAT_MODEL,
