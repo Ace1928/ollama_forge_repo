@@ -19,32 +19,46 @@ following the ten Eidosian principles to create a harmonious system of interdepe
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 🔍 System Awareness - Adaptive configuration for any environment
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-import os
-import logging
-
-# Configure minimal logging - will be overridden if proper logging is configured
-logging.basicConfig(level=logging.INFO)
-
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 🧩 Robust Import System - Elegant fallbacks with perfect precision
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-from .common import (
-        print_header, print_success, print_error, print_warning, print_info, print_json,
-        make_api_request, async_make_api_request, check_ollama_installed, 
-        check_ollama_running, install_ollama, ensure_ollama_running,
-        DEFAULT_OLLAMA_API_URL,
-    )
-from .model_constants import (
-        DEFAULT_CHAT_MODEL, BACKUP_CHAT_MODEL,
-        DEFAULT_EMBEDDING_MODEL, BACKUP_EMBEDDING_MODEL,
-        resolve_model_alias, get_fallback_model, get_model_recommendation
-    )
-from .embedding import (
-        calculate_similarity, normalize_vector,
-        batch_calculate_similarities, process_embeddings_response,
-    )
+import logging
+
+from common import (
+    DEFAULT_OLLAMA_API_URL,
+    async_make_api_request,
+    check_ollama_installed,
+    check_ollama_running,
+    ensure_ollama_running,
+    install_ollama,
+    make_api_request,
+    print_error,
+    print_header,
+    print_info,
+    print_json,
+    print_success,
+    print_warning,
+)
+from embedding import (
+    batch_calculate_similarities,
+    calculate_similarity,
+    normalize_vector,
+    process_embeddings_response,
+)
+from model_constants import (
+    BACKUP_CHAT_MODEL,
+    BACKUP_EMBEDDING_MODEL,
+    DEFAULT_CHAT_MODEL,
+    DEFAULT_EMBEDDING_MODEL,
+    get_fallback_model,
+    get_model_recommendation,
+    resolve_model_alias,
+)
+
+# Configure minimal logging - will be overridden if proper logging is configured
+logging.basicConfig(level=logging.INFO)
+
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 🚀 Public API - Perfect structure and adaptability
@@ -53,31 +67,33 @@ from .embedding import (
 # Define explicit exports with perfect precision - the Eidosian way
 __all__ = [
     # Formatting utilities - clarity and style
-    "print_header", "print_success", "print_error", "print_warning", "print_info", "print_json",
-    
+    "print_header",
+    "print_success",
+    "print_error",
+    "print_warning",
+    "print_info",
+    "print_json",
     # API utilities - communication and connectivity
-    "make_api_request", "async_make_api_request",
-    
+    "make_api_request",
+    "async_make_api_request",
     # Ollama management - system control
-    "check_ollama_installed", "check_ollama_running", "install_ollama", "ensure_ollama_running",
-    
+    "check_ollama_installed",
+    "check_ollama_running",
+    "install_ollama",
+    "ensure_ollama_running",
     # Constants - foundational values
     "DEFAULT_OLLAMA_API_URL",
-    "DEFAULT_CHAT_MODEL", "BACKUP_CHAT_MODEL", 
-    "DEFAULT_EMBEDDING_MODEL", "BACKUP_EMBEDDING_MODEL",
-    
+    "DEFAULT_CHAT_MODEL",
+    "BACKUP_CHAT_MODEL",
+    "DEFAULT_EMBEDDING_MODEL",
+    "BACKUP_EMBEDDING_MODEL",
     # Model utilities - selection and transformation
-    "resolve_model_alias", "get_fallback_model", "get_model_recommendation",
-    
+    "resolve_model_alias",
+    "get_fallback_model",
+    "get_model_recommendation",
     # Embedding utilities - vector operations
-    "calculate_similarity", "normalize_vector", 
-    "batch_calculate_similarities", "process_embeddings_response",
-    
-    # Submodules - hierarchical organization
-    "common", "model_constants", "embedding",
+    "calculate_similarity",
+    "normalize_vector",
+    "batch_calculate_similarities",
+    "process_embeddings_response",
 ]
-
-# Self-awareness diagnostic when in debug mode
-if os.environ.get('OLLAMA_FORGE_DEBUG') == '1':
-    print(f"🧰 Ollama Forge Helpers loaded with {len(__all__)} exported symbols")
-    print(f"📋 Key components: common={common}, model_constants={model_constants}, embedding={embedding}")

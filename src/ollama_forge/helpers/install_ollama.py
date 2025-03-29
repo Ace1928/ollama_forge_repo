@@ -4,21 +4,22 @@ Tool for checking, installing, and managing the Ollama backend.
 """
 
 import argparse
+import logging
 import platform
 import subprocess
 import sys
 import time
-import logging
 from typing import Tuple
 
-from helpers.common import (
-        DEFAULT_OLLAMA_API_URL,
-        print_error,
-        print_header,
-        print_info,
-        print_success,
-        print_warning,
-    )
+from common import (
+    DEFAULT_OLLAMA_API_URL,
+    print_error,
+    print_header,
+    print_info,
+    print_success,
+    print_warning,
+)
+
 
 def check_ollama_installed() -> Tuple[bool, str]:
     """
@@ -57,7 +58,7 @@ def check_ollama_installed() -> Tuple[bool, str]:
 def check_ollama_running() -> Tuple[bool, str]:
     """
     Check if the Ollama server is running.
-    
+
     Returns:
         Tuple[bool, str]: A tuple containing:
           - A boolean indicating if the server is running
@@ -233,7 +234,7 @@ def ensure_ollama_running() -> Tuple[bool, str]:
     Ensure Ollama is installed and running.
 
     This function checks whether Ollama is installed and attempts to
-    install it if not present. It also checks whether the Ollama service 
+    install it if not present. It also checks whether the Ollama service
     is running, and starts it if needed.
 
     Returns:
@@ -261,7 +262,7 @@ def ensure_ollama_running() -> Tuple[bool, str]:
             # Define Windows-specific constants
             DETACHED_PROCESS = 0x00000008
             CREATE_NEW_PROCESS_GROUP = 0x00000200
-            
+
             subprocess.Popen(
                 ["ollama", "serve"],
                 creationflags=DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP,

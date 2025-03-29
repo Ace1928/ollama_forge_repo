@@ -14,7 +14,7 @@ from typing import Dict
 
 # Standard model types
 MODEL_TYPE_CHAT = "chat"
-MODEL_TYPE_COMPLETION = "completion" 
+MODEL_TYPE_COMPLETION = "completion"
 MODEL_TYPE_EMBEDDING = "embedding"
 
 # Recommended models by category - optimized for different use cases
@@ -30,13 +30,15 @@ RECOMMENDED_MODELS = {
         MODEL_TYPE_CHAT: ["qwen2.5:7b-instruct", "deepseek-r1:7b"],
         MODEL_TYPE_COMPLETION: ["qwen2.5:7b", "deepseek-r1:7b"],
         MODEL_TYPE_EMBEDDING: ["qwen2.5:0.5b", "deepseek-r1:1.5b"],
-    }
+    },
 }
 
 # Default and backup models - balanced for general use
 DEFAULT_CHAT_MODEL = "deepseek-r1:1.5b"
 BACKUP_CHAT_MODEL = "qwen2.5:0.5b-Instruct"
-DEFAULT_EMBEDDING_MODEL = DEFAULT_CHAT_MODEL  # Using same model improves semantic consistency
+DEFAULT_EMBEDDING_MODEL = (
+    DEFAULT_CHAT_MODEL  # Using same model improves semantic consistency
+)
 BACKUP_EMBEDDING_MODEL = BACKUP_CHAT_MODEL
 
 # Model aliases for convenience
@@ -45,13 +47,11 @@ MODEL_ALIASES: Dict[str, str] = {
     "default": DEFAULT_CHAT_MODEL,
     "small": "deepseek-r1:1.5b",
     "medium": "qwen2.5:7b-instruct",
-    
     # Specific types
     "embed": "nomic-embed-text",
     "embedding": "nomic-embed-text",
     "code": "codellama:7b",
     "python": "codellama:7b-python",
-    
     # Name variations
     "deepseek-small": "deepseek-r1:1.5b",
     "deepseek-medium": "deepseek-r1:7b",
@@ -59,16 +59,16 @@ MODEL_ALIASES: Dict[str, str] = {
     "qwen-small": "qwen2.5:0.5b-instruct",
     "qwen-medium": "qwen2.5:7b-instruct",
     "qwen-large": "qwen2.5:32b-instruct",
-    }
+}
 
 
 def resolve_model_alias(model_name: str) -> str:
     """
     Resolve a model alias to its actual model name.
-    
+
     Args:
         model_name: The model name or alias
-        
+
     Returns:
         Resolved model name
     """
@@ -78,11 +78,11 @@ def resolve_model_alias(model_name: str) -> str:
 def get_fallback_model(model_name: str, model_type: str = MODEL_TYPE_CHAT) -> str:
     """
     Get an appropriate fallback model if the requested one is unavailable.
-    
+
     Args:
         model_name: The originally requested model name
         model_type: The type of model (chat, completion, embedding)
-        
+
     Returns:
         Name of an appropriate fallback model
     """
@@ -91,24 +91,26 @@ def get_fallback_model(model_name: str, model_type: str = MODEL_TYPE_CHAT) -> st
         default_fallback = BACKUP_EMBEDDING_MODEL
     else:
         default_fallback = BACKUP_CHAT_MODEL
-    
+
     # Try to find a model of similar size/capability
     for size, models in RECOMMENDED_MODELS.items():
-        if model_type in models and any(model_name.startswith(m.split(':')[0]) for m in models[model_type]):
+        if model_type in models and any(
+            model_name.startswith(m.split(":")[0]) for m in models[model_type]
+        ):
             # Return the first recommended model for this size/type
             return models[model_type][0]
-    
+
     return default_fallback
 
 
 def get_model_recommendation(task: str, size: str = "medium") -> str:
     """
     Get a model recommendation for a specific task and size preference.
-    
+
     Args:
         task: Description of the task ("chat", "code", "embedding", etc.)
         size: Desired model size ("small", "medium", "large")
-    
+
     Returns:
         Recommended model name
     """
@@ -123,17 +125,17 @@ def get_model_recommendation(task: str, size: str = "medium") -> str:
         "code": MODEL_TYPE_COMPLETION,
         "programming": MODEL_TYPE_COMPLETION,
     }
-    
+
     # Handle task-specific recommendations
     if task.lower() == "code" or task.lower() == "programming":
         return "codellama:7b-python" if size != "small" else "deepseek-r1:1.5b"
-    
+
     model_type = task_to_type.get(task.lower(), MODEL_TYPE_CHAT)
     size = size.lower() if size.lower() in RECOMMENDED_MODELS else "medium"
-    
+
     if model_type in RECOMMENDED_MODELS[size]:
         return RECOMMENDED_MODELS[size][model_type][0]
-    
+
     # Default fallbacks
     if model_type == MODEL_TYPE_EMBEDDING:
         return DEFAULT_EMBEDDING_MODEL
