@@ -106,10 +106,14 @@ def run_ollama() -> bool:
     print_info("Starting Ollama server...")
     try:
         if platform.system() == "Windows":
+            # Define Windows-specific constants
+            DETACHED_PROCESS = 0x00000008
+            CREATE_NEW_PROCESS_GROUP = 0x00000200
+
             # Start process detached on Windows
             subprocess.Popen(
                 ["ollama", "serve"],
-                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
+                creationflags=DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP,
                 shell=True,
             )
         else:
