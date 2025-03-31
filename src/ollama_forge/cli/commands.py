@@ -10,7 +10,7 @@ All functionality remains intact, refined with clarity and style.
 import argparse
 import sys
 import textwrap
-from typing import Any, Dict, List, TypedDict, cast
+from typing import Any, Dict, List, cast
 
 from colorama import Fore, Style
 from colorama import init as colorama_init
@@ -22,59 +22,13 @@ from ollama_forge.src.ollama_forge.config import (
     get_version_string,
 )
 from ollama_forge.src.ollama_forge.core import OllamaClient
-
-
-# Type definitions for API responses
-class MessageContent(TypedDict):
-    """Type for message content in chat responses."""
-
-    role: str
-    content: str
-
-
-class GenerateResponse(TypedDict):
-    """Type for generation response."""
-
-    response: str
-
-
-class ChatResponse(TypedDict):
-    """Type for chat response."""
-
-    message: MessageContent
-
-
-class EmbeddingResponse(TypedDict):
-    """Type for embedding response."""
-
-    embedding: List[float]
-
-
-class ModelInfo(TypedDict):
-    """Type for model information."""
-
-    name: str
-    size: str
-
-
-class ModelsResponse(TypedDict):
-    """Type for models list response."""
-
-    models: List[ModelInfo]
-
-
-class VersionResponse(TypedDict):
-    """Type for version response."""
-
-    version: str
-
-
-class PullProgress(TypedDict, total=False):
-    """Type for model pull progress information."""
-
-    completed: int
-    total: int  # Optional due to total=False
-    status: str
+from ollama_forge.src.ollama_forge.utils.type_definitions import (
+    EmbeddingResponse,
+    GenerateResponse,
+    ModelsResponse,
+    PullProgress,
+    VersionResponse,
+)
 
 
 def create_parser() -> argparse.ArgumentParser:
